@@ -18,13 +18,21 @@ config = configparser.ConfigParser()
 config['PATH'] = {}
 config['PATH']['Project Directory'] = 'C:/Users/dmiglani/Desktop/ModernAmerican'
 
-config['SQL_SERVER'] = {}
-config['SQL_SERVER']['DRIVER'] = 'SQL Server'
-config['SQL_SERVER']['SERVER'] = 'USHYDINDCH5\LOCALSERVER, 1434'
-config['SQL_SERVER']['DATABASE'] = 'ClaimCenter'
-config['SQL_SERVER']['User_ID'] = 'ccUser'
-config['SQL_SERVER']['Password'] = '#1American'
+#config['SQL_SERVER'] = {}
+#config['SQL_SERVER']['DRIVER'] = 'SQL Server'
+#config['SQL_SERVER']['SERVER'] = 'USHYDINDCH5\LOCALSERVER, 1434'
+#config['SQL_SERVER']['DATABASE'] = 'ClaimCenter'
+#config['SQL_SERVER']['User_ID'] = 'ccUser'
+#config['SQL_SERVER']['Password'] = '#1American'
 
 
-with open('config_modern_american.ini', 'w') as configfile:
+config['Oracle_Connect'] = {}
+config['Oracle_Connect']['Host'] = '10.14.230.44'
+config['Oracle_Connect']['Port'] = '1521'
+config['Oracle_Connect']['Database'] = 'ClaimCenterDatabase'
+config['Oracle_Connect']['User_ID'] = 'CCUSER'
+config['Oracle_Connect']['Password'] = 'Oracle123'
+
+
+with open('config_modern_am_oracle.ini', 'w') as configfile:
     config.write(configfile)

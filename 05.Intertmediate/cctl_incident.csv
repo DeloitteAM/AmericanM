@@ -1,0 +1,13 @@
+L_EN_US,PRIORITY,TYPECODE,S_EN_US,RETIRED,NAME,ID,DESCRIPTION
+PropertyIncident,1,PropertyIncident,0,0,PropertyIncident,1,PropertyIncident
+MobilePropertyIncident,2,MobilePropertyIncident,1,0,MobilePropertyIncident,2,MobilePropertyIncident
+VehicleIncident,3,VehicleIncident,2,0,VehicleIncident,3,VehicleIncident
+FixedPropertyIncident,4,FixedPropertyIncident,3,0,FixedPropertyIncident,4,FixedPropertyIncident
+InjuryIncident,5,InjuryIncident,4,0,InjuryIncident,5,InjuryIncident
+BaggageIncident,-1,BaggageIncident,5,0,BaggageIncident,6,BaggageIncident
+DwellingIncident,-1,DwellingIncident,6,0,DwellingIncident,7,DwellingIncident
+Incident,-1,Incident,7,0,Incident,8,Incident
+LivingExpensesIncident,-1,LivingExpensesIncident,8,0,LivingExpensesIncident,9,LivingExpensesIncident
+OtherStructureIncident,-1,OtherStructureIncident,9,0,OtherStructureIncident,10,OtherStructureIncident
+PropertyContentsIncident,-1,PropertyContentsIncident,10,0,PropertyContentsIncident,11,PropertyContentsIncident
+TripIncident,-1,TripIncident,11,0,TripIncident,12,TripIncident
