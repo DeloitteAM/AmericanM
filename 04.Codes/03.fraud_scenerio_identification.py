@@ -167,7 +167,6 @@ cc_claim_payment.columns.values
 cc_claim_payment['FraudScene1'] = cc_claim_payment.duplicated(['REPORTABLEAMOUNT', 'POLICYNUMBER'\
                 ,'LOSSCAUSE', 'ADDRESSLINE1', 'ADDRESSLINE2', 'POSTALCODE', 'PAYTO'], False)
 
-
 cc_claim_f1 = cc_claim_payment.loc[cc_claim_payment['FraudScene1'] == True]
 
 

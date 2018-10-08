@@ -16,9 +16,11 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import numpy as np
 
+
 ################################## Thresold ##############################################
 Thresold_Address_Fuzzy_Match = 75
 Thresold_Perc_Manual_Payment = 10
+num_std_dev = 1
 
 ################################### Read INI File ##########################################
 
@@ -37,6 +39,8 @@ del config
 
 ################################### Set Project Directory ##############################
 os.chdir(proj_path)
+
+intermediate_dir_path = proj_path + "05.Intertmediate/Pekin/"
 del proj_path
 
 ################################## Connect to oracle DB ################################
@@ -66,17 +70,23 @@ query = 'select * from cc_address'
 cc_address = pd.read_sql(query,con = conn)
 query = 'select * from cc_contact'
 cc_contact = pd.read_sql(query,con = conn)
+query = 'select * from cc_exposure'
+cc_exposure = pd.read_sql(query,con = conn)
+query = 'select * from cctl_losscause'
+cctl_losscause = pd.read_sql(query,con = conn)
 
 
-cc_claim.to_csv("05.Intertmediate/cc_claim.csv", encoding='utf-8', index=False)
-cc_Incident.to_csv("05.Intertmediate/cc_Incident.csv", encoding='utf-8', index=False)
-cc_transaction.to_csv("05.Intertmediate/cc_transaction.csv", encoding='utf-8', index=False)
-cc_activity.to_csv("05.Intertmediate/cc_activity.csv", encoding='utf-8', index=False)
-cc_policy.to_csv("05.Intertmediate/cc_policy.csv", encoding='utf-8', index=False)
-cctl_incident.to_csv("05.Intertmediate/cctl_incident.csv", encoding='utf-8', index=False)
-cc_check.to_csv("05.Intertmediate/cc_check.csv", encoding='utf-8', index=False)
-cc_address.to_csv("05.Intertmediate/cc_address.csv", encoding='utf-8', index=False)
-cc_contact.to_csv("05.Intertmediate/cc_contact.csv", encoding='utf-8', index=False)
+
+
+#cc_claim.to_csv("05.Intertmediate/Pekin/cc_claim.csv", encoding='utf-8', index=False)
+#cc_Incident.to_csv("05.Intertmediate/Pekin/cc_Incident.csv", encoding='utf-8', index=False)
+#cc_transaction.to_csv("05.Intertmediate/Pekin/cc_transaction.csv", encoding='utf-8', index=False)
+#cc_activity.to_csv("05.Intertmediate/Pekin/cc_activity.csv", encoding='utf-8', index=False)
+#cc_policy.to_csv("05.Intertmediate/Pekin/cc_policy.csv", encoding='utf-8', index=False)
+#cctl_incident.to_csv("05.Intertmediate/Pekin/cctl_incident.csv", encoding='utf-8', index=False)
+#cc_check.to_csv("05.Intertmediate/Pekin/cc_check.csv", encoding='utf-8', index=False)
+#cc_address.to_csv("05.Intertmediate/Pekin/cc_address.csv", encoding='utf-8', index=False)
+#cc_contact.to_csv("05.Intertmediate/Pekin/cc_contact.csv", encoding='utf-8', index=False)
 
 del query
 
@@ -94,6 +104,9 @@ cc_policy = cc_policy[['ID', 'REPORTINGDATE', 'EFFECTIVEDATE', 'EXPIRATIONDATE',
 
 cc_check = cc_check[['CLAIMID', 'PAYTO', 'REPORTABLEAMOUNT', 'PAYMENTMETHOD']]
 
+cc_exposure = cc_exposure[['COVERAGEID', 'EXAMINATIONDATE', 'DEPRECIATEDVALUE', 'INCIDENTID', \
+                           'REPLACEMENTVALUE', 'LOSTPROPERTYTYPE', 'CREATETIME']]
+
 ################## Preprocessing Columns #########################################################
 cc_claim.rename(columns={'ID':'CLAIMID'}, inplace=True)
 
@@ -102,6 +115,11 @@ cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.upper()
 cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('[^A-Za-z]+\s', '')
 cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('.', '')
 
+
+cc_check['PAYTO']= cc_check['PAYTO'].astype(str)
+cc_check['PAYTO'] = cc_check['PAYTO'].str.upper()
+cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('[^A-Za-z]+\s', '')
+cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('.', '')
 
 
 ################## Merge Data Tables ############################################################
@@ -204,3 +222,55 @@ receiver_amt_dat = cc_check.groupby(['PAYTO'], as_index = False).agg({'REPORTABL
 
 #################################################################################################
 cc_contact.columns.values
+
+
+#####################################################################################################
+
+####################### Fraud 5 : Adjustor Overpaying for certain cause ###################################
+
+cc_check = cc_check.merge(cc_claim[['CLAIMID', 'LOSSCAUSE']], 'left')
+
+cause_pymt = cc_check.groupby('LOSSCAUSE', as_index = False).agg({'REPORTABLEAMOUNT' : ['mean', 'std']})
+cause_pymt.columns = ['LOSSCAUSE', 'Mean_Payment', 'Std_Payment']
+
+cc_check = cc_check.merge(cause_pymt)
+
+cc_check_f5 = cc_check.loc[cc_check['REPORTABLEAMOUNT'] > (cc_check['Mean_Payment'] \
+                                       + num_std_dev * cc_check['Std_Payment'])]
+
+
+
+
+
+
+
+cc_exposure.columns.values
+
+
+#######################################################
+
+reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2]
+
+
+
+
+
+
+
+
+######################################### 
+#select CLAIMANTDENORMID,ClaimID from cc_exposure;
+#
+#select claimnumber,LOSSCAUSE from cc_claim where ID = 114;
+#
+#select Name from CCTL_LOSSCAUSE where ID = 10034;
+#
+#select Firstname,Lastname,Name from cc_contact where ID = 504;
+#
+#select * from CC_TRANSACTION where SUBTYPE = 2;
+#select * from cctl_transaction; 
+# 
+
+
+
+
