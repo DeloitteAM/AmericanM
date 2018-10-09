@@ -1,0 +1,64 @@
+L_EN_US,PRIORITY,TYPECODE,S_EN_US,RETIRED,NAME,ID,DESCRIPTION
+Abandonment,-1,abandonment,0,0,Abandonment,10001,Abandonment
+Animal,-1,animal,1,0,Animal,10002,Animal
+Animal/insect bite/scratch/sting,-1,animal_bite,2,0,Animal/insect bite/scratch/sting,10003,Animal/insect bite/scratch/sting
+Assault or battery,-1,assault,3,0,Assault or battery,10004,Assault or battery
+Breach of contract,-1,breach,4,0,Breach of contract,10005,Breach of contract
+Broken glass,-1,broken_glass,5,0,Broken glass,10006,Broken glass
+Burglary,-1,burglary,6,0,Burglary,10007,Burglary
+Burn or scald - heat or cold exposures - contact with,-1,burn_scald,7,0,Burn or scald - heat or cold exposures - contact with,10008,Burn or scald - heat or cold exposures - contact with
+Cancellation,-1,cancellation,8,0,Cancellation,10009,Cancellation
+"Caught in, under, or between",-1,caught_in,9,0,"Caught in, under, or between",10010,"Caught in, under, or between"
+Collision while turning left,-1,leftcollision,10,0,Collision while turning left,10011,Collision while turning left
+Collision with bicycle,-1,bikecollision,11,0,Collision with bicycle,10012,Collision with bicycle
+Collision with fixed object,-1,fixedobjcoll,12,0,Collision with fixed object,10013,Collision with fixed object
+Collision with motor vehicle,-1,vehcollision,13,0,Collision with motor vehicle,10014,Collision with motor vehicle
+Collision with other object,-1,otherobjcoll,14,0,Collision with other object,10015,Collision with other object
+Collision with pedestrian,-1,pedcollision,15,0,Collision with pedestrian,10016,Collision with pedestrian
+Collision with train or bus,-1,trainbuscoll,16,0,Collision with train or bus,10017,Collision with train or bus
+Contact with electric current,-1,electrical_curr,17,0,Contact with electric current,10018,Contact with electric current
+Crash of airplane,-1,air_crash,18,0,Crash of airplane,10019,Crash of airplane
+Crash of rail vehicle,-1,rail_crash,19,0,Crash of rail vehicle,10020,Crash of rail vehicle
+Crash of water vehicle,-1,water_veh_crash,20,0,Crash of water vehicle,10021,Crash of water vehicle
+"Cut, puncture, scrape, injured by",-1,cut,21,0,"Cut, puncture, scrape, injured by",10022,"Cut, puncture, scrape, injured by"
+Damage in loading or unloading,-1,loadingdamage,22,0,Damage in loading or unloading,10023,Damage in loading or unloading
+Death,-1,death,23,0,Death,10024,Death
+Delay,-1,delay,24,0,Delay,10025,Delay
+Documents,-1,documents,25,0,Documents,10026,"Loss of documents like passport, tickets, driver's license"
+Earthquake,-1,earthquake,26,0,Earthquake,10027,Earthquake
+Errors and omissions,-1,errors,27,0,Errors and omissions,10028,Errors and omissions
+Excess liability,-1,excess,28,0,Excess liability,10029,Excess liability
+Explosion,-1,explosion,29,0,Explosion,10030,Explosion
+"Fall, slip, or trip injury",-1,fall,30,0,"Fall, slip, or trip injury",10031,"Fall, slip, or trip injury"
+Falling or moving object,-1,FallingObject,31,0,Falling or moving object,10032,Falling or moving object
+Faulty construction,-1,construction,32,0,Faulty construction,10033,Faulty construction
+Fire,-1,fire,33,0,Fire,10034,Fire
+Glass breakage,-1,glassbreakage,34,0,Glass breakage,10035,Glass breakage
+Hail,-1,hail,35,0,Hail,10036,Hail
+Malicious mischief and vandalism,-1,vandalism,36,0,Malicious mischief and vandalism,10037,Malicious mischief and vandalism
+"Mandatory official duty (military, jury etc)",-1,official_duty,37,0,"Mandatory official duty (military, jury etc)",10038,"Mandatory official duty (military, jury etc)"
+Medical error,-1,med_error,38,0,Medical error,10039,Medical error
+Miscellaneous causes,-1,miscellaneous,39,0,Miscellaneous causes,10040,Miscellaneous causes
+Missed departure,-1,missed_departure,40,0,Missed departure,10041,Missed departure
+Mold,-1,mold,41,0,Mold,10042,Mold
+Motor vehicle,-1,motorvehicle,42,0,Motor vehicle,10043,Motor vehicle
+Personal misconduct,-1,personal_misconduct,43,0,Personal misconduct,10044,Personal Misconduct
+Pre existing medical condition,-1,preex_med_condition,44,0,Pre existing medical condition,10045,Pre existing medical condition
+Product failure,-1,product,45,0,Product failure,10046,Product failure
+Professional or organized sports,-1,professional_sports,46,0,Professional or organized sports,10047,Professional or Organized Sports
+Rear-end collision,-1,rearend,47,0,Rear-end collision,10048,Rear-end collision
+Riot and civil commotion,-1,riotandcivil,48,0,Riot and civil commotion,10049,Riot and civil commotion
+Rollover,-1,rollover,49,0,Rollover,10050,Rollover
+Rubbed or abraded by,-1,rubbed,50,0,Rubbed or abraded by,10051,Rubbed or abraded by
+Snow/ice,-1,snowice,51,0,Snow/ice,10052,Snow/ice
+Strain or injury by,-1,strain,52,0,Strain or injury by,10053,Strain or injury by
+Striking against or stepping on,-1,striking,53,0,Striking against or stepping on,10054,Striking against or stepping on
+Struck or injured by,-1,struck,54,0,Struck or injured by,10055,Struck or injured by
+Structural failure,-1,structfailure,55,0,Structural failure,10056,Structural failure
+Terrorism or Hijack,-1,terrorism_hijack,56,0,Terrorism or Hijack,10057,Terrorism or Hijack
+Theft Audio or other parts,-1,theftparts,57,0,Theft Audio or other parts,10058,Theft Audio or other parts
+Theft of entire vehicle,-1,theftentire,58,0,Theft of entire vehicle,10059,Theft of entire vehicle
+Water damage,-1,waterdamage,59,0,Water damage,10060,Water Damage
+Wind,-1,wind,60,0,Wind,10061,Wind
+Collision with animal,-1,animalcollision,61,1,Collision with animal,10062,Collision with animal
+Fire damage to vehicle,-1,firedamage,62,1,Fire damage to vehicle,10063,Fire damage to vehicle

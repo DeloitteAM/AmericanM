@@ -40,7 +40,7 @@ del config
 ################################### Set Project Directory ##############################
 os.chdir(proj_path)
 
-intermediate_dir_path = proj_path + "05.Intertmediate/Pekin/"
+intermediate_dir_path = proj_path + "/05.Intertmediate/"
 del proj_path
 
 ################################## Connect to oracle DB ################################
@@ -74,22 +74,39 @@ query = 'select * from cc_exposure'
 cc_exposure = pd.read_sql(query,con = conn)
 query = 'select * from cctl_losscause'
 cctl_losscause = pd.read_sql(query,con = conn)
-
-
-
-
-#cc_claim.to_csv("05.Intertmediate/Pekin/cc_claim.csv", encoding='utf-8', index=False)
-#cc_Incident.to_csv("05.Intertmediate/Pekin/cc_Incident.csv", encoding='utf-8', index=False)
-#cc_transaction.to_csv("05.Intertmediate/Pekin/cc_transaction.csv", encoding='utf-8', index=False)
-#cc_activity.to_csv("05.Intertmediate/Pekin/cc_activity.csv", encoding='utf-8', index=False)
-#cc_policy.to_csv("05.Intertmediate/Pekin/cc_policy.csv", encoding='utf-8', index=False)
-#cctl_incident.to_csv("05.Intertmediate/Pekin/cctl_incident.csv", encoding='utf-8', index=False)
-#cc_check.to_csv("05.Intertmediate/Pekin/cc_check.csv", encoding='utf-8', index=False)
-#cc_address.to_csv("05.Intertmediate/Pekin/cc_address.csv", encoding='utf-8', index=False)
-#cc_contact.to_csv("05.Intertmediate/Pekin/cc_contact.csv", encoding='utf-8', index=False)
+query = 'select * from cc_transactionlineitem'
+cc_transactionlineitem = pd.read_sql(query,con = conn)
+query = 'select * from cc_reserveline'
+cc_reserveline = pd.read_sql(query,con = conn)
+query = 'select * from cc_claimcontact'
+cc_claimcontact = pd.read_sql(query,con = conn)
 
 del query
 
+
+cc_claim.to_csv(intermediate_dir_path + "cc_claim.csv", encoding='utf-8', index=False)
+cc_Incident.to_csv(intermediate_dir_path + "cc_Incident.csv", encoding='utf-8', index=False)
+cc_transaction.to_csv(intermediate_dir_path + "cc_transaction.csv", encoding='utf-8', index=False)
+cc_activity.to_csv(intermediate_dir_path + "cc_activity.csv", encoding='utf-8', index=False)
+cc_policy.to_csv(intermediate_dir_path + "cc_policy.csv", encoding='utf-8', index=False)
+cctl_incident.to_csv(intermediate_dir_path + "cctl_incident.csv", encoding='utf-8', index=False)
+cc_check.to_csv(intermediate_dir_path + "cc_check.csv", encoding='utf-8', index=False)
+cc_address.to_csv(intermediate_dir_path + "cc_address.csv", encoding='utf-8', index=False)
+cc_contact.to_csv(intermediate_dir_path + "cc_contact.csv", encoding='utf-8', index=False)
+cc_exposure.to_csv(intermediate_dir_path + "cc_exposure.csv", encoding='utf-8', index=False)
+cctl_losscause.to_csv(intermediate_dir_path + "cctl_losscause.csv", encoding='utf-8', index=False)
+cc_transactionlineitem.to_csv(intermediate_dir_path + "cc_transactionlineitem.csv", encoding='utf-8', index=False)
+cc_reserveline.to_csv(intermediate_dir_path + "cc_reserveline.csv", encoding='utf-8', index=False)
+cc_claimcontact.to_csv(intermediate_dir_path + "cc_claimcontact.csv", encoding='utf-8', index=False)
+
+
+cc_claim2 = cc_claim.copy()
+cc_address2 = cc_address.copy()
+cc_policy2 = cc_policy.copy()
+cc_check2 = cc_check.copy()
+cc_exposure2 = cc_exposure.copy()
+cc_contact2 = cc_contact.copy()
+cc_claimcontact2 = cc_claimcontact.copy()
 
 
 ############################### Select Desired Columns in Datatables ############################
@@ -102,12 +119,22 @@ cc_address = cc_address[['ID', 'ADDRESSLINE1', 'ADDRESSLINE2', 'STATE', 'CITY', 
 
 cc_policy = cc_policy[['ID', 'REPORTINGDATE', 'EFFECTIVEDATE', 'EXPIRATIONDATE', 'POLICYNUMBER']]
 
-cc_check = cc_check[['CLAIMID', 'PAYTO', 'REPORTABLEAMOUNT', 'PAYMENTMETHOD']]
+cc_check['CLAIMCONTACTID'].nunique()
+cc_check = cc_check[['CLAIMID', 'PAYTO', 'REPORTABLEAMOUNT', 'PAYMENTMETHOD', 'CLAIMCONTACTID']]
 
-cc_exposure = cc_exposure[['COVERAGEID', 'EXAMINATIONDATE', 'DEPRECIATEDVALUE', 'INCIDENTID', \
-                           'REPLACEMENTVALUE', 'LOSTPROPERTYTYPE', 'CREATETIME']]
+cc_exposure = cc_exposure[['ID','COVERAGEID', 'EXAMINATIONDATE', 'DEPRECIATEDVALUE', 'INCIDENTID', \
+                           'REPLACEMENTVALUE', 'LOSTPROPERTYTYPE', 'CREATETIME', 'CLAIMID', \
+                           'CLAIMANTDENORMID']]
+
+cc_contact = cc_contact[['TAXID', 'ID', 'LASTNAME', 'FIRSTNAME', 'EMPLOYEENUMBER', 'NAME', \
+                         'GREENCARDNUMBER', 'GENDER', 'MARITALSTATUS']]
+
+cc_claimcontact = cc_claimcontact[['ID', 'CONTACTID']]
 
 ################## Preprocessing Columns #########################################################
+cc_exposure.rename(columns={'ID':'EXPOSUREID'}, inplace=True)
+cc_exposure.rename(columns={'CLAIMANTDENORMID':'CONTACTID'}, inplace=True)
+
 cc_claim.rename(columns={'ID':'CLAIMID'}, inplace=True)
 
 cc_address['ADDRESSLINE1']= cc_address['ADDRESSLINE1'].astype(str)
@@ -122,10 +149,20 @@ cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('[^A-Za-z]+\s', '')
 cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('.', '')
 
 
+cc_transaction.rename(columns={'ID':'TRANSACTIONID'}, inplace=True)
+cc_transaction['CREATETIME'] = pd.to_datetime(cc_transaction["CREATETIME"])
+
+
+
+
+cc_contact.rename(columns={'ID':'CONTACTID'}, inplace=True)
+cc_claimcontact.rename(columns={'ID':'CLAIMCONTACTID'}, inplace=True)
+
 ################## Merge Data Tables ############################################################
 cc_claim = cc_claim.merge(cc_address, 'left', left_on = 'LOSSLOCATIONID', right_on = 'ID')
 cc_claim = cc_claim.merge(cc_policy, 'left', left_on = 'POLICYID', right_on = 'ID')
 
+cc_check = cc_check.merge(cc_claimcontact, 'left')
 #################### Number of approavals for each claim #########################################
 multiple_approvals = cc_activity.groupby('CLAIMID').agg({'UPDATEUSERID': 'nunique'})
 multiple_approvals_grp = multiple_approvals.groupby('UPDATEUSERID').agg({'UPDATEUSERID': 'count'})
@@ -169,7 +206,7 @@ for x in range(len(cc_claim_f2.index)) :
                cc_claim_f2['Grp_ADDRESSLINE'][x], scorer = fuzz.token_sort_ratio)[1][1]
 
 cc_claim_f2 = cc_claim_f2.loc[cc_claim_f2['FuzzyAddressScore'] >= Thresold_Address_Fuzzy_Match]
-del Thresold_Address_Fuzzy_Match
+del Thresold_Address_Fuzzy_Match, x
 
 ######################## Fraud Scenerio 3 : Manual Cheque Fraud #######################################################
 
@@ -200,7 +237,7 @@ del cc_check_manual, Thresold_Perc_Manual_Payment
 
 #######################################################################################################
 
-##################### Fraud 4 : Adjustor Insured Pair #################################################
+##################### Fraud 4a : Adjustor- Reciever Pair Insured Pair #################################################
 
 
 pair_adjustor_receiver = cc_check.groupby(['PAYTO','ASSIGNEDUSERID'], as_index = False).agg({\
@@ -218,10 +255,24 @@ cc_claim_f4 = pair_adjustor_receiver.loc[
 
 receiver_amt_dat = cc_check.groupby(['PAYTO'], as_index = False).agg({'REPORTABLEAMOUNT' : 'sum'})
 
+##################### Fraud 4b : Adjustor- Claimant Pair Insured Pair #################################################
 
 
-#################################################################################################
-cc_contact.columns.values
+pair_adjustor_claimant = cc_check.groupby(['CONTACTID','ASSIGNEDUSERID'], as_index = False).agg({\
+                                         'REPORTABLEAMOUNT' : 'sum', 'CLAIMID' : 'nunique'})
+
+
+pair_adjustor_claimant = pair_adjustor_claimant.sort_values('REPORTABLEAMOUNT', ascending=False)
+pair_adjustor_claimant.rename(columns={'CLAIMID':'count_CLAIMID'}, inplace=True)
+
+Thresold_Percentile = pair_adjustor_claimant['REPORTABLEAMOUNT'].quantile(.75)
+
+cc_claim_f4b = pair_adjustor_claimant.loc[
+        pair_adjustor_claimant['REPORTABLEAMOUNT'] >= Thresold_Percentile]
+
+
+claimant_amt_dat = cc_check.groupby(['CONTACTID'], as_index = False).agg({'REPORTABLEAMOUNT' : 'sum'})
+
 
 
 #####################################################################################################
@@ -239,21 +290,48 @@ cc_check_f5 = cc_check.loc[cc_check['REPORTABLEAMOUNT'] > (cc_check['Mean_Paymen
                                        + num_std_dev * cc_check['Std_Payment'])]
 
 
-
-
-
-
-
+###################################################################################
 cc_exposure.columns.values
+cc_contact.columns.values
 
-
-#######################################################
+###############################################################################################
+##################### Fraud : Adjustor approving more than claim ##############################
 
 reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2]
+reserve_dat.columns.values
+reserve_dat = reserve_dat[['CREATETIME', 'CLAIMID','EXPOSUREID', 'TRANSACTIONID', 'CLAIMCONTACTID']]
+
+reserve_dat['CLAIMID'].nunique()
+reserve_dat[['CLAIMID', 'EXPOSUREID']].nunique()
+reserve_dat.groupby(['CLAIMID', 'EXPOSUREID']).ngroups
+
+reserve_dat = reserve_dat.sort_values('CREATETIME', ascending = True)
+reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], as_index = False).first()
+reserve_first['TRANSACTIONID'].nunique()
+
+cc_transactionlineitem['TRANSACTIONID'].nunique()
+
+amt_claimed = cc_transactionlineitem.groupby('TRANSACTIONID', as_index = False).agg({'REPORTINGAMOUNT' : 'sum'})
+
+reserve_first = reserve_first.merge(amt_claimed, 'left')
+reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 'left')
 
 
+amt_claimant_received = cc_check.groupby(['CLAIMID', 'CONTACTID'], as_index = False).agg(\
+                                        {'REPORTABLEAMOUNT' : 'sum'})
+
+payment_claimed_dat = reserve_first.merge(amt_claimant_received, 'left')
+
+payment_claimed_dat = payment_claimed_dat.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID']], 'left')
+
+payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'CONTACTID', 'ASSIGNEDUSERID',\
+                                          'REPORTINGAMOUNT', 'REPORTABLEAMOUNT']]
+
+payment_claimed_dat['Claim_Approve_Ratio'] = payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat[\
+                   'REPORTINGAMOUNT']
 
 
+payment_claimed_f6 = payment_claimed_dat.loc[payment_claimed_dat['Claim_Approve_Ratio'] > 1]
 
 
 
