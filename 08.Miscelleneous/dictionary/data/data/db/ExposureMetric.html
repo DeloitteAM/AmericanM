@@ -1,0 +1,611 @@
+<html>
+<head>
+<title>ExposureMetric</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<LINK REL="StyleSheet" HREF="../../res/dictionary.css" TYPE="text/css"/>
+<script language="JavaScript" src="../../res/dictionaryui.js"></script>
+
+</head>
+<body onload='generateTOC()'>
+<div class="titlebox">
+<div class="pagetitle">ExposureMetric <span class="entityname">(cc_exposuremetric) (delegates to <A HREF="Editable.html" TARGET="tableFrame">Editable</A>, <A HREF="Extractable.html" TARGET="tableFrame">Extractable</A>, <A HREF="MetricLimitTimeDelegate.html" TARGET="tableFrame">MetricLimitTimeDelegate</A>)</span></div>
+<div class="desc">
+<span id="reflink_1259" class="reftext" onclick='showAndHideRefBox("refbox_1259", "reflink_1259")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1259" class="refbox_inner" style="display:none;">
+Metrics related to a exposure
+</div>
+</span>
+</div>
+</div>
+<div class="attrbox">
+<div class="entitybox"
+<span class="attrtitle">Entity: </span>
+<span class="attrtext">ExposureMetric</span>
+</div>
+<div class="attributesbox"
+<span class="attrtitle">Attributes: </span>
+<span class="attrtext">Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup>, Editable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Editable</b><br>The related database table contains rows that are editable by application users based on roles and permissions. An Editable table manages additional fields that represent an audit trail of an entity in the table (for example, who created it and when, who last edited it and when).')">?</span></sup>, Exportable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>, Extendable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Extendable</b><br>Can be extended with additional custom fields added to it.')">?</span></sup>, Keyed<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Keyed</b><br>Has a related database table that has a primary key. Each row in a Keyed table has an integer primary key named ID. IDs are managed internally by the application, and the system ensures that no two rows in a keyed table have the same ID. In addition to the internal key, an external primary key can be associated with each row in a table.')">?</span></sup>, Sourceable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Sourceable</b><br>Contains entities that are linked to an external source. Each row in a Sourceable entity\'s table has additional fields to identify the external system and store the ID of the Sourceable entity in the external system.')">?</span></sup>, Supertype<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Supertype</b><br>A single table that represents multiple types of entities, called subtypes. Each subtype shares application logic and a majority of their fields. Each subtype may also define fields that are particular to it.')">?</span></sup>, Versionable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Versionable</b><br>Has a version number that increases every time the entity is changed. This allows the cache to identify when entities have been updated.')">?</span></sup></span>
+</div>
+</div>
+<div class="refbox biglist odd">
+<span id="reflink_1260" class="reftext" onclick='showAndHideRefBox("refbox_1260", "reflink_1260")'><img src="../../res/blackup.gif" border="0"><b>Array references: </b></span>
+<div id="refbox_1260" class="refbox_inner" style="display:none;">
+<A HREF="../full/Exposure.html" TARGET="tableFrame">Exposure.ExposureMetrics</A>
+</div>
+</span>
+</div>
+<span class="showhidelink"><a id="showAllElements" href="#" onClick="return showAllUIDetails()">Show user interface details on all fields</a></span>
+
+<br>
+<a name=subtypes></a>
+<br/>
+<span class="filtertitle">Subtypes</span>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Code</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>
+DecimalExposureMetric</td>
+<td><A HREF="#DecimalExposureMetric" TARGET="tableFrame">DecimalExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+IntegerExposureMetric</td>
+<td><A HREF="#IntegerExposureMetric" TARGET="tableFrame">IntegerExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+MoneyExposureMetric</td>
+<td><A HREF="#MoneyExposureMetric" TARGET="tableFrame">MoneyExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+NetTotalIncurredExposureMetric</td>
+<td><A HREF="#NetTotalIncurredExposureMetric" TARGET="tableFrame">NetTotalIncurredExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+TotalPaidExposureMetric</td>
+<td><A HREF="#TotalPaidExposureMetric" TARGET="tableFrame">TotalPaidExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+PercentExposureMetric</td>
+<td><A HREF="#PercentExposureMetric" TARGET="tableFrame">PercentExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentEscalatedActivitiesExposureMetric</td>
+<td><A HREF="#PercentEscalatedActivitiesExposureMetric" TARGET="tableFrame">PercentEscalatedActivitiesExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentPaidLossCostsExposureMetric</td>
+<td><A HREF="#PercentPaidLossCostsExposureMetric" TARGET="tableFrame">PercentPaidLossCostsExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+TimeBasedExposureMetric</td>
+<td><A HREF="#TimeBasedExposureMetric" TARGET="tableFrame">TimeBasedExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysInitialContactWithClaimantExposureMetric</td>
+<td><A HREF="#DaysInitialContactWithClaimantExposureMetric" TARGET="tableFrame">DaysInitialContactWithClaimantExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysOpenExposureMetric</td>
+<td><A HREF="#DaysOpenExposureMetric" TARGET="tableFrame">DaysOpenExposureMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+TimeToFirstPaymentExposureMetric</td>
+<td><A HREF="#TimeToFirstPaymentExposureMetric" TARGET="tableFrame">TimeToFirstPaymentExposureMetric</A></td>
+</tr>
+</table>
+<a id='TOC'></a>
+<a name="Fields"></a><div class="arraysbox">Fields</div>
+<a name="exposuremetric_id"></a>
+<p class="column">
+<span class="coltitle">ID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "key")'>key</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Internally managed primary key</span>
+<a name="exposuremetric_archivepartition"></a>
+<p class="column">
+<span class="coltitle">ArchivePartition</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "softentityreference")'>softentityreference</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize"></span>
+<br>
+<span class="desc">Unique number to partition the data so that the multiple workers can work independently</span>
+<a name="exposuremetric_createtime"></a>
+<p class="column">
+<span class="coltitle">CreateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was created</span>
+<a name="exposuremetric_createuser"></a>
+<p class="column">
+<span class="coltitle">CreateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: CreateUserID)</span>
+<br>
+<span class="desc">User who created the object</span>
+<a name="exposuremetric_exposure"></a>
+<p class="column">
+<span class="coltitle">Exposure</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="Exposure.html" TARGET="tableFrame">Exposure</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: ExposureID)&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The foreign key cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Exposure to which this metric is related.</span>
+<a name="exposuremetric_metriclimitdenorm"></a>
+<p class="column">
+<span class="coltitle">MetricLimitDenorm</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="ExposureMetricLimit.html" TARGET="tableFrame">ExposureMetricLimit</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: MetricLimitDenormID)&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The metric limit for the exposure metric, denormalized from the claim's inital exposure metric limits array.</span>
+<a name="exposuremetric_publicid"></a>
+<p class="column">
+<span class="coltitle">PublicID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "publicid")'>publicid</span> (64)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">ID or primary key of the row in the external system to which this row is mapped</span>
+<a name="exposuremetric_reachredtime"></a>
+<p class="column">
+<span class="coltitle">ReachRedTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Time the red limit was or will be reached</span>
+<a name="exposuremetric_reachyellowtime"></a>
+<p class="column">
+<span class="coltitle">ReachYellowTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Time the yellow limit was or will be reached.</span>
+<a name="exposuremetric_subtype"></a>
+<p class="column">
+<span class="coltitle">Subtype</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="#subtypes" TARGET="tableFrame">ExposureMetric</A> subtypes</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The typekey cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Identifies a particular subtype within a supertype table; each subtype of a supertype has its own unique subtype value</span>
+<div class='screenrefbody'>
+<span id=showhideUI_0 onclick='showAndHideUIDetails("UITable_0", "showhideUI_0")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_0' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>ClaimKeyMetrics.pcf:131</td>
+<td></td>
+<td>metric.Subtype</td>
+<td>false</td>
+<td>
+ClaimKeyMetrics
+</td>
+</tr>
+</table>
+</div></div>
+<a name="exposuremetric_updatetime"></a>
+<p class="column">
+<span class="coltitle">UpdateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was last updated</span>
+<a name="exposuremetric_updateuser"></a>
+<p class="column">
+<span class="coltitle">UpdateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: UpdateUserID)</span>
+<br>
+<span class="desc">User who last updated the object</span>
+<a name="Unique Keys for ExposureMetric"></a><div class="arraysbox">Unique Keys for ExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<a name="Subtypes"></a><div class="arraysbox">Subtypes</div>
+<div class='subtypebox'>
+<a name=DaysInitialContactWithClaimantExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysInitialContactWithClaimantExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#TimeBasedExposureMetric" TARGET="tableFrame">TimeBasedExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1261" class="reftext" onclick='showAndHideRefBox("refbox_1261", "reflink_1261")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1261" class="refbox_inner" style="display:none;">
+Initial Contact with Claimant
+</div>
+</span>
+</div>
+</div>
+<a name="daysinitialcontactwithclaimantexposuremetric_activityskipped"></a>
+<p class="column">
+<span class="exttitle">ActivitySkipped</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: false)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Did the user explicitly skip the initial contact with claimant activity?</span>
+<a name="Unique Keys for DaysInitialContactWithClaimantExposureMetric"></a><div class="arraysbox">Unique Keys for DaysInitialContactWithClaimantExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DaysOpenExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysOpenExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#TimeBasedExposureMetric" TARGET="tableFrame">TimeBasedExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1262" class="reftext" onclick='showAndHideRefBox("refbox_1262", "reflink_1262")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1262" class="refbox_inner" style="display:none;">
+Days Open
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for DaysOpenExposureMetric"></a><div class="arraysbox">Unique Keys for DaysOpenExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DecimalExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DecimalExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html" TARGET="tableFrame">ExposureMetric</A>)</span><span class='supername'> (delegates to <A HREF="DecimalMetricDelegate.html" TARGET="tableFrame">DecimalMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1263" class="reftext" onclick='showAndHideRefBox("refbox_1263", "reflink_1263")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1263" class="refbox_inner" style="display:none;">
+Decimal based exposure metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="decimalexposuremetric_decimalvalue"></a>
+<p class="column">
+<span class="coltitle">DecimalValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "decimalmetric")'>decimalmetric</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Decimal field to store the value.</span>
+<a name="Unique Keys for DecimalExposureMetric"></a><div class="arraysbox">Unique Keys for DecimalExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=IntegerExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">IntegerExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html" TARGET="tableFrame">ExposureMetric</A>)</span><span class='supername'> (delegates to <A HREF="IntegerMetricDelegate.html" TARGET="tableFrame">IntegerMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1264" class="reftext" onclick='showAndHideRefBox("refbox_1264", "reflink_1264")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1264" class="refbox_inner" style="display:none;">
+Integer based exposure metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="integerexposuremetric_integervalue"></a>
+<p class="column">
+<span class="coltitle">IntegerValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "integer")'>integer</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Integer field to store the value.</span>
+<a name="Unique Keys for IntegerExposureMetric"></a><div class="arraysbox">Unique Keys for IntegerExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=MoneyExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">MoneyExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html" TARGET="tableFrame">ExposureMetric</A>)</span><span class='supername'> (delegates to <A HREF="MoneyMetricDelegate.html" TARGET="tableFrame">MoneyMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1265" class="reftext" onclick='showAndHideRefBox("refbox_1265", "reflink_1265")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1265" class="refbox_inner" style="display:none;">
+Money based exposure metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="moneyexposuremetric_moneyvalue"></a>
+<p class="column">
+<span class="coltitle">MoneyValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "currencyamount")'>currencyamount</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Money field to store the money value.</span>
+<a name="Unique Keys for MoneyExposureMetric"></a><div class="arraysbox">Unique Keys for MoneyExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=NetTotalIncurredExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">NetTotalIncurredExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#MoneyExposureMetric" TARGET="tableFrame">MoneyExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1266" class="reftext" onclick='showAndHideRefBox("refbox_1266", "reflink_1266")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1266" class="refbox_inner" style="display:none;">
+Total Incurred
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for NetTotalIncurredExposureMetric"></a><div class="arraysbox">Unique Keys for NetTotalIncurredExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentEscalatedActivitiesExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentEscalatedActivitiesExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#PercentExposureMetric" TARGET="tableFrame">PercentExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1267" class="reftext" onclick='showAndHideRefBox("refbox_1267", "reflink_1267")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1267" class="refbox_inner" style="display:none;">
+% Escalated Activities
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for PercentEscalatedActivitiesExposureMetric"></a><div class="arraysbox">Unique Keys for PercentEscalatedActivitiesExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html" TARGET="tableFrame">ExposureMetric</A>)</span><span class='supername'> (delegates to <A HREF="PercentMetricDelegate.html" TARGET="tableFrame">PercentMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1268" class="reftext" onclick='showAndHideRefBox("refbox_1268", "reflink_1268")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1268" class="refbox_inner" style="display:none;">
+Percent based exposure metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="percentexposuremetric_percentvalue"></a>
+<p class="column">
+<span class="coltitle">PercentValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "percentagemetric")'>percentagemetric</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Percent field to store the value.</span>
+<a name="Unique Keys for PercentExposureMetric"></a><div class="arraysbox">Unique Keys for PercentExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentPaidLossCostsExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentPaidLossCostsExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#PercentExposureMetric" TARGET="tableFrame">PercentExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1269" class="reftext" onclick='showAndHideRefBox("refbox_1269", "reflink_1269")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1269" class="refbox_inner" style="display:none;">
+Paid Loss Costs as % of Total Paid
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for PercentPaidLossCostsExposureMetric"></a><div class="arraysbox">Unique Keys for PercentPaidLossCostsExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TimeBasedExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TimeBasedExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html" TARGET="tableFrame">ExposureMetric</A>)</span><span class='supername'> (delegates to <A HREF="TimeBasedMetricDelegate.html" TARGET="tableFrame">TimeBasedMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1270" class="reftext" onclick='showAndHideRefBox("refbox_1270", "reflink_1270")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1270" class="refbox_inner" style="display:none;">
+Time based exposure metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="timebasedexposuremetric_integervalue"></a>
+<p class="column">
+<span class="coltitle">IntegerValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "integer")'>integer</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Integer field to store the value.</span>
+<a name="timebasedexposuremetric_isopen"></a>
+<p class="column">
+<span class="coltitle">IsOpen</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: true)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The value of an open time based metric is now - start time, once closed it has a fixed integer value</span>
+<a name="timebasedexposuremetric_skipped"></a>
+<p class="column">
+<span class="coltitle">Skipped</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: false)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">True if the metric is closed because the normal closing event was skipped.</span>
+<a name="timebasedexposuremetric_starttime"></a>
+<p class="column">
+<span class="coltitle">StartTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Starting time of the metric.</span>
+<a name="Unique Keys for TimeBasedExposureMetric"></a><div class="arraysbox">Unique Keys for TimeBasedExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TimeToFirstPaymentExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TimeToFirstPaymentExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#TimeBasedExposureMetric" TARGET="tableFrame">TimeBasedExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1271" class="reftext" onclick='showAndHideRefBox("refbox_1271", "reflink_1271")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1271" class="refbox_inner" style="display:none;">
+Time to First Payment
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for TimeToFirstPaymentExposureMetric"></a><div class="arraysbox">Unique Keys for TimeToFirstPaymentExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TotalPaidExposureMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TotalPaidExposureMetric <span class='supername'>(subtype of <A HREF="ExposureMetric.html#MoneyExposureMetric" TARGET="tableFrame">MoneyExposureMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_1272" class="reftext" onclick='showAndHideRefBox("refbox_1272", "reflink_1272")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_1272" class="refbox_inner" style="display:none;">
+Paid
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for TotalPaidExposureMetric"></a><div class="arraysbox">Unique Keys for TotalPaidExposureMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>exposuremetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<script language="JavaScript">
+function showAllUIDetails() {
+showUIDetails('UITable_0', 'showhideUI_0');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Hide user interface details on all fields';
+  link.onclick = hideAllUIDetails;
+  return false;
+}
+function hideAllUIDetails() {
+hideUIDetails('UITable_0', 'showhideUI_0');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Show user interface details on all fields';
+  link.onclick = showAllUIDetails;
+  return false;
+}
+</script>
+
+</body>
+</html>

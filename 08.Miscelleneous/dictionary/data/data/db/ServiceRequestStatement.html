@@ -1,0 +1,842 @@
+<html>
+<head>
+<title>ServiceRequestStatement</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<LINK REL="StyleSheet" HREF="../../res/dictionary.css" TYPE="text/css"/>
+<script language="JavaScript" src="../../res/dictionaryui.js"></script>
+
+</head>
+<body onload='generateTOC()'>
+<div class="titlebox">
+<div class="pagetitle">ServiceRequestStatement <span class="entityname">(cc_servicerequeststatement) (delegates to <A HREF="Editable.html" TARGET="tableFrame">Editable</A>, <A HREF="EventAware.html" TARGET="tableFrame">EventAware</A>, <A HREF="Extractable.html" TARGET="tableFrame">Extractable</A>, <A HREF="Validatable.html" TARGET="tableFrame">Validatable</A>)</span></div>
+<div class="desc">
+<span id="reflink_2438" class="reftext" onclick='showAndHideRefBox("refbox_2438", "reflink_2438")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_2438" class="refbox_inner" style="display:none;">
+An estimation (such as a quote or invoice) received from a specialist and related to a Service Request.
+</div>
+</span>
+</div>
+</div>
+<div class="attrbox">
+<div class="entitybox"
+<span class="attrtitle">Entity: </span>
+<span class="attrtext">ServiceRequestStatement</span>
+</div>
+<div class="attributesbox"
+<span class="attrtitle">Attributes: </span>
+<span class="attrtext">Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup>, Editable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Editable</b><br>The related database table contains rows that are editable by application users based on roles and permissions. An Editable table manages additional fields that represent an audit trail of an entity in the table (for example, who created it and when, who last edited it and when).')">?</span></sup>, Exportable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>, Extendable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Extendable</b><br>Can be extended with additional custom fields added to it.')">?</span></sup>, Keyed<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Keyed</b><br>Has a related database table that has a primary key. Each row in a Keyed table has an integer primary key named ID. IDs are managed internally by the application, and the system ensures that no two rows in a keyed table have the same ID. In addition to the internal key, an external primary key can be associated with each row in a table.')">?</span></sup>, Sourceable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Sourceable</b><br>Contains entities that are linked to an external source. Each row in a Sourceable entity\'s table has additional fields to identify the external system and store the ID of the Sourceable entity in the external system.')">?</span></sup>, Supertype<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Supertype</b><br>A single table that represents multiple types of entities, called subtypes. Each subtype shares application logic and a majority of their fields. Each subtype may also define fields that are particular to it.')">?</span></sup>, Versionable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Versionable</b><br>Has a version number that increases every time the entity is changed. This allows the cache to identify when entities have been updated.')">?</span></sup></span>
+</div>
+</div>
+<b>Messaging Events:</b> The application will generate these events for this entity:<ul><li>ServiceRequestStatementRemoved</li><li>ServiceRequestStatementAdded</li><li>ServiceRequestStatementChanged</li></ul><i>Integration programmers can write Event Fired rules to perform actions on these events. Refer
+ to the <b>Integration Guide</b> for the complete list of events for all entities. Remember to
+ configure a new or existing messaging destination in Studio to listen for desired events. </i><div class="refbox biglist odd">
+<span id="reflink_2439" class="reftext" onclick='showAndHideRefBox("refbox_2439", "reflink_2439")'><img src="../../res/blackup.gif" border="0"><b>Concrete FK references: </b></span>
+<div id="refbox_2439" class="refbox_inner" style="display:none;">
+<A HREF="../full/ServiceRequestChange.html" TARGET="tableFrame">ServiceRequestChange.RelatedStatement</A><br><A HREF="../full/ServiceRequestStatementDocumentLink.html" TARGET="tableFrame">ServiceRequestStatementDocumentLink.ServiceRequestStatement</A><br><A HREF="../full/ServiceRequestStatementLineItem.html" TARGET="tableFrame">ServiceRequestStatementLineItem.ServiceRequestStatement</A>
+</div>
+</span>
+</div>
+<span class="showhidelink"><a id="showAllElements" href="#" onClick="return showAllUIDetails()">Show user interface details on all fields</a></span>
+
+<br>
+<a name=subtypes></a>
+<br/>
+<span class="filtertitle">Subtypes</span>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Code</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>
+ServiceRequestInvoice</td>
+<td><A HREF="#ServiceRequestInvoice" TARGET="tableFrame">ServiceRequestInvoice</A></td>
+</tr>
+<tr>
+<td>
+ServiceRequestQuote</td>
+<td><A HREF="#ServiceRequestQuote" TARGET="tableFrame">ServiceRequestQuote</A></td>
+</tr>
+</table>
+<a id='TOC'></a>
+<a name="Fields"></a><div class="arraysbox">Fields</div>
+<a name="servicerequeststatement_id"></a>
+<p class="column">
+<span class="coltitle">ID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "key")'>key</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Internally managed primary key</span>
+<a name="servicerequeststatement_approvaldate"></a>
+<p class="column">
+<span class="coltitle">ApprovalDate</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The time at which this statement was approved.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_0 onclick='showAndHideUIDetails("UITable_0", "showhideUI_0")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_0' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:146</td>
+<td>Web.ServiceRequest.Invoice.ApprovalDate</td>
+<td>selectedInvoice.ApprovalDate</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:67</td>
+<td>Web.ServiceRequest.Quote.ApprovalDate</td>
+<td>currentQuote.ApprovalDate</td>
+<td>false</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_approvedby"></a>
+<p class="column">
+<span class="coltitle">ApprovedBy</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: ApprovedByID)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The user who approved this statement.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_1 onclick='showAndHideUIDetails("UITable_1", "showhideUI_1")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_1' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:6</td>
+<td>Web.ServiceRequest.Invoice.ApprovedBy</td>
+<td>selectedInvoice.ApprovedBy</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:6</td>
+<td>Web.ServiceRequest.Quote.ApprovedBy</td>
+<td>currentQuote.ApprovedBy</td>
+<td>false</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_archivepartition"></a>
+<p class="column">
+<span class="coltitle">ArchivePartition</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "softentityreference")'>softentityreference</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize"></span>
+<br>
+<span class="desc">Unique number to partition the data so that the multiple workers can work independently</span>
+<a name="servicerequeststatement_createtime"></a>
+<p class="column">
+<span class="coltitle">CreateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was created</span>
+<a name="servicerequeststatement_createuser"></a>
+<p class="column">
+<span class="coltitle">CreateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: CreateUserID)</span>
+<br>
+<span class="desc">User who created the object</span>
+<a name="servicerequeststatement_declinedreason"></a>
+<p class="column">
+<span class="coltitle">DeclinedReason</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "longtext")'>longtext</span> (65000)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The reason the statement was declined. When the state changes this value is recalculated, as the previous value not longer makes sense.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_2 onclick='showAndHideUIDetails("UITable_2", "showhideUI_2")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_2' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:129</td>
+<td>Web.ServiceRequest.Invoice.RejectedReason</td>
+<td>selectedInvoice.DeclinedReason</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>ServiceRequestDV.pcf:40</td>
+<td>Web.ServiceRequest.RequoteReason</td>
+<td>serviceRequest.LatestQuote.DeclinedReason</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_description"></a>
+<p class="column">
+<span class="coltitle">Description</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "longtext")'>longtext</span> (65000)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The description for the statement</span>
+<div class='screenrefbody'>
+<span id=showhideUI_3 onclick='showAndHideUIDetails("UITable_3", "showhideUI_3")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_3' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:163</td>
+<td>Web.ServiceRequest.Invoice.Description</td>
+<td>selectedInvoice.Description</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.invoice.pcf:38</td>
+<td>Web.ServiceRequest.Invoice.Description</td>
+<td>currentInvoice.Description</td>
+<td>currentInvoice.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:75</td>
+<td>Web.ServiceRequest.Quote.Description</td>
+<td>currentQuote.Description</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+<tr>
+<td>StatementDV.quoterevision.pcf:51</td>
+<td>Web.ServiceRequest.Quote.Description</td>
+<td>currentQuote.Description</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_publicid"></a>
+<p class="column">
+<span class="coltitle">PublicID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "publicid")'>publicid</span> (64)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">ID or primary key of the row in the external system to which this row is mapped</span>
+<a name="servicerequeststatement_referencenumber"></a>
+<p class="column">
+<span class="coltitle">ReferenceNumber</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "shorttext")'>shorttext</span> (255)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">A string identifier assigned to this ServiceRequestStatement by the specialist. The value of this field may only be meaningful to the specialist.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_4 onclick='showAndHideUIDetails("UITable_4", "showhideUI_4")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_4' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>ClaimServiceRequests.pcf:602</td>
+<td>LV.Claim.ServiceRequest.Invoice.ReferenceNumber</td>
+<td>invoice.ReferenceNumber</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:119</td>
+<td>Web.ServiceRequest.Invoice.ReferenceNumber</td>
+<td>selectedInvoice.ReferenceNumber</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.invoice.pcf:24</td>
+<td>Web.ServiceRequest.Invoice.ReferenceNumber</td>
+<td>currentInvoice.ReferenceNumber</td>
+<td>currentInvoice.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:38</td>
+<td>Web.ServiceRequest.Quote.ReferenceNumber</td>
+<td>currentQuote.ReferenceNumber</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+<tr>
+<td>StatementDV.quoterevision.pcf:27</td>
+<td>Web.ServiceRequest.Quote.ReferenceNumber</td>
+<td>currentQuote.ReferenceNumber</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_servicerequest"></a>
+<p class="column">
+<span class="coltitle">ServiceRequest</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="ServiceRequest.html" TARGET="tableFrame">ServiceRequest</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: ServiceRequestID)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The foreign key cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Service Request the statement is linked to.</span>
+<a name="servicerequeststatement_source"></a>
+<p class="column">
+<span class="coltitle">Source</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="../typelist/StatementSource_tl.html" TARGET="tableFrame">StatementSource</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The external system from which this data comes </span>
+<a name="servicerequeststatement_statementcreationtime"></a>
+<p class="column">
+<span class="coltitle">StatementCreationTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The time at which this statement was created.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_5 onclick='showAndHideUIDetails("UITable_5", "showhideUI_5")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_5' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>CheckDV.pcf:336</td>
+<td>LV.Financials.Check.Invoices.SubmittedDate</td>
+<td>invoice.StatementCreationTime</td>
+<td>false</td>
+<td>
+ClaimFinancialsChecksDetail
+<br>
+ClaimFinancialsChecksDetailPrint
+<br>
+DeleteSinglePayment
+</td>
+</tr>
+<tr>
+<td>ClaimServiceRequests.pcf:616</td>
+<td>LV.Claim.ServiceRequest.Invoice.SubmittedDate</td>
+<td>invoice.StatementCreationTime</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:134</td>
+<td>Web.ServiceRequest.Invoice.SubmittedDate</td>
+<td>selectedInvoice.StatementCreationTime</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:45</td>
+<td>Web.ServiceRequest.Quote.CreationDate</td>
+<td>currentQuote.StatementCreationTime</td>
+<td>false</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequeststatement_subtype"></a>
+<p class="column">
+<span class="coltitle">Subtype</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="#subtypes" TARGET="tableFrame">ServiceRequestStatement</A> subtypes</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The typekey cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Identifies a particular subtype within a supertype table; each subtype of a supertype has its own unique subtype value</span>
+<a name="servicerequeststatement_updatetime"></a>
+<p class="column">
+<span class="coltitle">UpdateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was last updated</span>
+<a name="servicerequeststatement_updateuser"></a>
+<p class="column">
+<span class="coltitle">UpdateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: UpdateUserID)</span>
+<br>
+<span class="desc">User who last updated the object</span>
+<a name="Arrays"></a><div class="arraysbox">Arrays</div>
+<a name="servicerequeststatement_lineitems"></a>
+<p class="column">
+<span class="coltitle">LineItems</span>&nbsp;&nbsp;<span class="titleDesc">array key for <A HREF="ServiceRequestStatementLineItem.html" TARGET="tableFrame">ServiceRequestStatementLineItem</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc"></span>
+<a name="servicerequeststatement_statementdocumentlinks"></a>
+<p class="column">
+<span class="coltitle">StatementDocumentLinks</span>&nbsp;&nbsp;<span class="titleDesc">array key for <A HREF="ServiceRequestStatementDocumentLink.html" TARGET="tableFrame">ServiceRequestStatementDocumentLink</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup></span>
+<br>
+<span class="desc">The join entity that holds the information for documents associated with this statement</span>
+<a name="Unique Keys for ServiceRequestStatement"></a><div class="arraysbox">Unique Keys for ServiceRequestStatement</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>servicerequestst1a</td>
+<td>PublicID</td></tr>
+</table>
+<a name="Subtypes"></a><div class="arraysbox">Subtypes</div>
+<div class='subtypebox'>
+<a name=ServiceRequestInvoice></a>
+<div class="titlebox">
+<div class="filtertitle">ServiceRequestInvoice <span class='supername'>(subtype of <A HREF="ServiceRequestStatement.html" TARGET="tableFrame">ServiceRequestStatement</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_2440" class="reftext" onclick='showAndHideRefBox("refbox_2440", "reflink_2440")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_2440" class="refbox_inner" style="display:none;">
+An invoice received from a specialist for a Service Request.
+</div>
+</span>
+</div>
+</div>
+<div class="refbox biglist odd">
+<span id="reflink_2441" class="reftext" onclick='showAndHideRefBox("refbox_2441", "reflink_2441")'><img src="../../res/blackup.gif" border="0"><b>Array references: </b></span>
+<div id="refbox_2441" class="refbox_inner" style="display:none;">
+<A HREF="../full/Check.html" TARGET="tableFrame">Check.ServiceRequestInvoices</A><br><A HREF="../full/ServiceRequest.html" TARGET="tableFrame">ServiceRequest.Invoices</A>
+</div>
+</span>
+</div>
+<a name="servicerequestinvoice_check"></a>
+<p class="column">
+<span class="coltitle">Check</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="Check.html" TARGET="tableFrame">Check</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: CheckID)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The check that paid this invoice.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_6 onclick='showAndHideUIDetails("UITable_6", "showhideUI_6")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_6' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>MarkInvoicePaidPopup.pcf:30</td>
+<td>Web.ServiceRequest.MarkAsPaidPopup.ClaimChecks</td>
+<td>invoice.Check</td>
+<td>true</td>
+<td>
+MarkInvoicePaidPopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequestinvoice_paidby"></a>
+<p class="column">
+<span class="coltitle">PaidBy</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: PaidByID)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The user who paid this invoice.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_7 onclick='showAndHideUIDetails("UITable_7", "showhideUI_7")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_7' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:6</td>
+<td>Web.ServiceRequest.Invoice.PaidBy</td>
+<td>selectedInvoice.PaidBy</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequestinvoice_paymentdate"></a>
+<p class="column">
+<span class="coltitle">PaymentDate</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The time at which this invoice was paid.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_8 onclick='showAndHideUIDetails("UITable_8", "showhideUI_8")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_8' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:158</td>
+<td>Web.ServiceRequest.Invoice.PaymentDate</td>
+<td>selectedInvoice.PaymentDate</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+</table>
+</div></div>
+<a name="servicerequestinvoice_status"></a>
+<p class="column">
+<span class="coltitle">Status</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="../typelist/ServiceRequestInvoiceStatus_tl.html" TARGET="tableFrame">ServiceRequestInvoiceStatus</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: InvoiceStatus)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The typekey cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The current invoice status</span>
+<div class='screenrefbody'>
+<span id=showhideUI_9 onclick='showAndHideUIDetails("UITable_9", "showhideUI_9")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_9' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>ClaimServiceRequests.pcf:625</td>
+<td>LV.Claim.ServiceRequest.Invoice.Status</td>
+<td>invoice.Status</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>InvoicePanelSet.pcf:124</td>
+<td>Web.ServiceRequest.Invoice.InvoiceStatus</td>
+<td>selectedInvoice.Status</td>
+<td>false</td>
+<td>
+ClaimServiceRequests
+</td>
+</tr>
+<tr>
+<td>StatementDV.invoice.pcf:30</td>
+<td>Web.ServiceRequest.Invoice.InvoiceStatus</td>
+<td>(currentInvoice as ServiceRequestInvoice).Status</td>
+<td>false</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="Unique Keys for ServiceRequestInvoice"></a><div class="arraysbox">Unique Keys for ServiceRequestInvoice</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>servicerequestst1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=ServiceRequestQuote></a>
+<div class="titlebox">
+<div class="filtertitle">ServiceRequestQuote <span class='supername'>(subtype of <A HREF="ServiceRequestStatement.html" TARGET="tableFrame">ServiceRequestStatement</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_2442" class="reftext" onclick='showAndHideRefBox("refbox_2442", "reflink_2442")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_2442" class="refbox_inner" style="display:none;">
+A quote received from a specialist for a Service Request.
+</div>
+</span>
+</div>
+</div>
+<div class="refbox biglist odd">
+<span id="reflink_2443" class="reftext" onclick='showAndHideRefBox("refbox_2443", "reflink_2443")'><img src="../../res/blackup.gif" border="0"><b>Concrete FK references: </b></span>
+<div id="refbox_2443" class="refbox_inner" style="display:none;">
+<A HREF="../full/ServiceRequest.html" TARGET="tableFrame">ServiceRequest.LatestQuote</A><br><A HREF="../full/Servreqltstqte.html" TARGET="tableFrame">Servreqltstqte.ForeignEntity</A>
+</div>
+</span>
+</div>
+<div class="refbox biglist odd">
+<span id="reflink_2444" class="reftext" onclick='showAndHideRefBox("refbox_2444", "reflink_2444")'><img src="../../res/blackup.gif" border="0"><b>Array references: </b></span>
+<div id="refbox_2444" class="refbox_inner" style="display:none;">
+<A HREF="../full/ServiceRequest.html" TARGET="tableFrame">ServiceRequest.Quotes</A>
+</div>
+</span>
+</div>
+<a name="servicerequestquote_expecteddaystoperformservice"></a>
+<p class="column">
+<span class="coltitle">ExpectedDaysToPerformService</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "integer")'>integer</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Number of business days the specialist expects it will take to perform the service.</span>
+<div class='screenrefbody'>
+<span id=showhideUI_10 onclick='showAndHideUIDetails("UITable_10", "showhideUI_10")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_10' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>StatementDV.quote.pcf:55</td>
+<td>Web.ServiceRequest.Quote.DaysToPerformService</td>
+<td>(currentQuote as ServiceRequestQuote).ExpectedDaysToPerformService</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+<tr>
+<td>StatementDV.quoterevision.pcf:43</td>
+<td>Web.ServiceRequest.Quote.DaysToPerformService</td>
+<td>(currentQuote as ServiceRequestQuote).ExpectedDaysToPerformService</td>
+<td>currentQuote.New</td>
+<td>
+PromoteQuoteOnly
+<br>
+QuoteDetailsPopup
+<br>
+NewInvoice
+<br>
+ClaimServiceRequests
+<br>
+AddReviseQuotePopup
+</td>
+</tr>
+</table>
+</div></div>
+<a name="Unique Keys for ServiceRequestQuote"></a><div class="arraysbox">Unique Keys for ServiceRequestQuote</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>servicerequestst1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<script language="JavaScript">
+function showAllUIDetails() {
+showUIDetails('UITable_0', 'showhideUI_0');
+showUIDetails('UITable_1', 'showhideUI_1');
+showUIDetails('UITable_2', 'showhideUI_2');
+showUIDetails('UITable_3', 'showhideUI_3');
+showUIDetails('UITable_4', 'showhideUI_4');
+showUIDetails('UITable_5', 'showhideUI_5');
+showUIDetails('UITable_6', 'showhideUI_6');
+showUIDetails('UITable_7', 'showhideUI_7');
+showUIDetails('UITable_8', 'showhideUI_8');
+showUIDetails('UITable_9', 'showhideUI_9');
+showUIDetails('UITable_10', 'showhideUI_10');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Hide user interface details on all fields';
+  link.onclick = hideAllUIDetails;
+  return false;
+}
+function hideAllUIDetails() {
+hideUIDetails('UITable_0', 'showhideUI_0');
+hideUIDetails('UITable_1', 'showhideUI_1');
+hideUIDetails('UITable_2', 'showhideUI_2');
+hideUIDetails('UITable_3', 'showhideUI_3');
+hideUIDetails('UITable_4', 'showhideUI_4');
+hideUIDetails('UITable_5', 'showhideUI_5');
+hideUIDetails('UITable_6', 'showhideUI_6');
+hideUIDetails('UITable_7', 'showhideUI_7');
+hideUIDetails('UITable_8', 'showhideUI_8');
+hideUIDetails('UITable_9', 'showhideUI_9');
+hideUIDetails('UITable_10', 'showhideUI_10');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Show user interface details on all fields';
+  link.onclick = showAllUIDetails;
+  return false;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,891 @@
+<html>
+<head>
+<title>ClaimMetric</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<LINK REL="StyleSheet" HREF="../../res/dictionary.css" TYPE="text/css"/>
+<script language="JavaScript" src="../../res/dictionaryui.js"></script>
+
+</head>
+<body onload='generateTOC()'>
+<div class="titlebox">
+<div class="pagetitle">ClaimMetric <span class="entityname">(cc_claimmetric) (delegates to <A HREF="Editable.html" TARGET="tableFrame">Editable</A>, <A HREF="Extractable.html" TARGET="tableFrame">Extractable</A>, <A HREF="MetricLimitTimeDelegate.html" TARGET="tableFrame">MetricLimitTimeDelegate</A>)</span></div>
+<div class="desc">
+<span id="reflink_679" class="reftext" onclick='showAndHideRefBox("refbox_679", "reflink_679")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_679" class="refbox_inner" style="display:none;">
+Metrics related to a claim
+</div>
+</span>
+</div>
+</div>
+<div class="attrbox">
+<div class="entitybox"
+<span class="attrtitle">Entity: </span>
+<span class="attrtext">ClaimMetric</span>
+</div>
+<div class="attributesbox"
+<span class="attrtitle">Attributes: </span>
+<span class="attrtext">Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup>, Editable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Editable</b><br>The related database table contains rows that are editable by application users based on roles and permissions. An Editable table manages additional fields that represent an audit trail of an entity in the table (for example, who created it and when, who last edited it and when).')">?</span></sup>, Exportable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>, Extendable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Extendable</b><br>Can be extended with additional custom fields added to it.')">?</span></sup>, Keyed<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Keyed</b><br>Has a related database table that has a primary key. Each row in a Keyed table has an integer primary key named ID. IDs are managed internally by the application, and the system ensures that no two rows in a keyed table have the same ID. In addition to the internal key, an external primary key can be associated with each row in a table.')">?</span></sup>, Sourceable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Sourceable</b><br>Contains entities that are linked to an external source. Each row in a Sourceable entity\'s table has additional fields to identify the external system and store the ID of the Sourceable entity in the external system.')">?</span></sup>, Supertype<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Supertype</b><br>A single table that represents multiple types of entities, called subtypes. Each subtype shares application logic and a majority of their fields. Each subtype may also define fields that are particular to it.')">?</span></sup>, Versionable<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Versionable</b><br>Has a version number that increases every time the entity is changed. This allows the cache to identify when entities have been updated.')">?</span></sup></span>
+</div>
+</div>
+<div class="refbox biglist odd">
+<span id="reflink_680" class="reftext" onclick='showAndHideRefBox("refbox_680", "reflink_680")'><img src="../../res/blackup.gif" border="0"><b>Array references: </b></span>
+<div id="refbox_680" class="refbox_inner" style="display:none;">
+<A HREF="../full/Claim.html" TARGET="tableFrame">Claim.ClaimMetrics</A>
+</div>
+</span>
+</div>
+<span class="showhidelink"><a id="showAllElements" href="#" onClick="return showAllUIDetails()">Show user interface details on all fields</a></span>
+
+<br>
+<a name=subtypes></a>
+<br/>
+<span class="filtertitle">Subtypes</span>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Code</td>
+<td>Name</td>
+</tr>
+<tr>
+<td>
+DecimalClaimMetric</td>
+<td><A HREF="#DecimalClaimMetric" TARGET="tableFrame">DecimalClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+IntegerClaimMetric</td>
+<td><A HREF="#IntegerClaimMetric" TARGET="tableFrame">IntegerClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+AllEscalatedActivitiesClaimMetric</td>
+<td><A HREF="#AllEscalatedActivitiesClaimMetric" TARGET="tableFrame">AllEscalatedActivitiesClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+OpenEscalatedActivitiesClaimMetric</td>
+<td><A HREF="#OpenEscalatedActivitiesClaimMetric" TARGET="tableFrame">OpenEscalatedActivitiesClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+OverdueActivitiesClaimMetric</td>
+<td><A HREF="#OverdueActivitiesClaimMetric" TARGET="tableFrame">OverdueActivitiesClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+ReserveChangeCountClaimMetric</td>
+<td><A HREF="#ReserveChangeCountClaimMetric" TARGET="tableFrame">ReserveChangeCountClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+MoneyClaimMetric</td>
+<td><A HREF="#MoneyClaimMetric" TARGET="tableFrame">MoneyClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+NetTotalIncurredClaimMetric</td>
+<td><A HREF="#NetTotalIncurredClaimMetric" TARGET="tableFrame">NetTotalIncurredClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+TotalPaidClaimMetric</td>
+<td><A HREF="#TotalPaidClaimMetric" TARGET="tableFrame">TotalPaidClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+PercentClaimMetric</td>
+<td><A HREF="#PercentClaimMetric" TARGET="tableFrame">PercentClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentEscalatedActivitiesClaimMetric</td>
+<td><A HREF="#PercentEscalatedActivitiesClaimMetric" TARGET="tableFrame">PercentEscalatedActivitiesClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentIncurredLossCostsClaimMetric</td>
+<td><A HREF="#PercentIncurredLossCostsClaimMetric" TARGET="tableFrame">PercentIncurredLossCostsClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentPaidLossCostsClaimMetric</td>
+<td><A HREF="#PercentPaidLossCostsClaimMetric" TARGET="tableFrame">PercentPaidLossCostsClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+PercentReserveChangeClaimMetric</td>
+<td><A HREF="#PercentReserveChangeClaimMetric" TARGET="tableFrame">PercentReserveChangeClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+TimeBasedClaimMetric</td>
+<td><A HREF="#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysInitialContactWithInsuredClaimMetric</td>
+<td><A HREF="#DaysInitialContactWithInsuredClaimMetric" TARGET="tableFrame">DaysInitialContactWithInsuredClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysLastViewedByAdjusterClaimMetric</td>
+<td><A HREF="#DaysLastViewedByAdjusterClaimMetric" TARGET="tableFrame">DaysLastViewedByAdjusterClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysLastViewedBySupervisorClaimMetric</td>
+<td><A HREF="#DaysLastViewedBySupervisorClaimMetric" TARGET="tableFrame">DaysLastViewedBySupervisorClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+DaysOpenClaimMetric</td>
+<td><A HREF="#DaysOpenClaimMetric" TARGET="tableFrame">DaysOpenClaimMetric</A></td>
+</tr>
+<tr>
+<td>
+&nbsp;
+&nbsp;
+TimeToFirstPaymentClaimMetric</td>
+<td><A HREF="#TimeToFirstPaymentClaimMetric" TARGET="tableFrame">TimeToFirstPaymentClaimMetric</A></td>
+</tr>
+</table>
+<a id='TOC'></a>
+<a name="Fields"></a><div class="arraysbox">Fields</div>
+<a name="claimmetric_id"></a>
+<p class="column">
+<span class="coltitle">ID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "key")'>key</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Internally managed primary key</span>
+<a name="claimmetric_archivepartition"></a>
+<p class="column">
+<span class="coltitle">ArchivePartition</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "softentityreference")'>softentityreference</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize"></span>
+<br>
+<span class="desc">Unique number to partition the data so that the multiple workers can work independently</span>
+<a name="claimmetric_claim"></a>
+<p class="column">
+<span class="coltitle">Claim</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="Claim.html" TARGET="tableFrame">Claim</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: ClaimID)&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The foreign key cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Claim to which this metric is related.</span>
+<a name="claimmetric_claimmetriccategory"></a>
+<p class="column">
+<span class="coltitle">ClaimMetricCategory</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="../typelist/ClaimMetricCategory_tl.html" TARGET="tableFrame">ClaimMetricCategory</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The typekey cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Category of Claim Metric.</span>
+<a name="claimmetric_createtime"></a>
+<p class="column">
+<span class="coltitle">CreateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was created</span>
+<a name="claimmetric_createuser"></a>
+<p class="column">
+<span class="coltitle">CreateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: CreateUserID)</span>
+<br>
+<span class="desc">User who created the object</span>
+<a name="claimmetric_metriclimitdenorm"></a>
+<p class="column">
+<span class="coltitle">MetricLimitDenorm</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="ClaimMetricLimit.html" TARGET="tableFrame">ClaimMetricLimit</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: MetricLimitDenormID)&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The metric limit for the metric, denormalized from the claim's inital claim metric limits array.</span>
+<a name="claimmetric_publicid"></a>
+<p class="column">
+<span class="coltitle">PublicID</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "publicid")'>publicid</span> (64)</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">ID or primary key of the row in the external system to which this row is mapped</span>
+<a name="claimmetric_reachredtime"></a>
+<p class="column">
+<span class="coltitle">ReachRedTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Time the red limit was or will be reached</span>
+<a name="claimmetric_reachyellowtime"></a>
+<p class="column">
+<span class="coltitle">ReachYellowTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Time the yellow limit was or will be reached.</span>
+<a name="claimmetric_subtype"></a>
+<p class="column">
+<span class="coltitle">Subtype</span>&nbsp;&nbsp;<span class="titleDesc">type key to <A HREF="#subtypes" TARGET="tableFrame">ClaimMetric</A> subtypes</span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The typekey cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Identifies a particular subtype within a supertype table; each subtype of a supertype has its own unique subtype value</span>
+<div class='screenrefbody'>
+<span id=showhideUI_0 onclick='showAndHideUIDetails("UITable_0", "showhideUI_0")' style='cursor:pointer'>
+<img src="../../res/blackup.gif" border="0">Show user interface details...
+</span>
+<div id='UITable_0' style='display:none'>
+Used in:<br>
+<table class='screenreftable' border='1'>
+<tr>
+<th>PCF file</th>
+<th>Label</th>
+<th>Value</th>
+<th>Editable</th>
+<th>Pages</th>
+</tr>
+<tr>
+<td>ClaimKeyMetrics.pcf:62</td>
+<td></td>
+<td>metric.Subtype</td>
+<td>false</td>
+<td>
+ClaimKeyMetrics
+</td>
+</tr>
+</table>
+</div></div>
+<a name="claimmetric_updatetime"></a>
+<p class="column">
+<span class="coltitle">UpdateTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup></span>
+<br>
+<span class="desc">Timestamp when the object was last updated</span>
+<a name="claimmetric_updateuser"></a>
+<p class="column">
+<span class="coltitle">UpdateUser</span>&nbsp;&nbsp;<span class="titleDesc">foreign key to <A HREF="User.html" TARGET="tableFrame">User</A></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(database column: UpdateUserID)</span>
+<br>
+<span class="desc">User who last updated the object</span>
+<a name="Unique Keys for ClaimMetric"></a><div class="arraysbox">Unique Keys for ClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<a name="Subtypes"></a><div class="arraysbox">Subtypes</div>
+<div class='subtypebox'>
+<a name=AllEscalatedActivitiesClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">AllEscalatedActivitiesClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#IntegerClaimMetric" TARGET="tableFrame">IntegerClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_681" class="reftext" onclick='showAndHideRefBox("refbox_681", "reflink_681")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_681" class="refbox_inner" style="display:none;">
+Number of Escalated Activities
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for AllEscalatedActivitiesClaimMetric"></a><div class="arraysbox">Unique Keys for AllEscalatedActivitiesClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DaysInitialContactWithInsuredClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysInitialContactWithInsuredClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_682" class="reftext" onclick='showAndHideRefBox("refbox_682", "reflink_682")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_682" class="refbox_inner" style="display:none;">
+Initial Contact with Insured
+</div>
+</span>
+</div>
+</div>
+<a name="daysinitialcontactwithinsuredclaimmetric_activityskipped"></a>
+<p class="column">
+<span class="exttitle">ActivitySkipped</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: false)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(non-null)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>non-null</b><br>The column cannot contain null values.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Did the user explicitly skip the initial contact with insured activity?</span>
+<a name="Unique Keys for DaysInitialContactWithInsuredClaimMetric"></a><div class="arraysbox">Unique Keys for DaysInitialContactWithInsuredClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DaysLastViewedByAdjusterClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysLastViewedByAdjusterClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_683" class="reftext" onclick='showAndHideRefBox("refbox_683", "reflink_683")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_683" class="refbox_inner" style="display:none;">
+Number of days since the adjuster last viewed the claim
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for DaysLastViewedByAdjusterClaimMetric"></a><div class="arraysbox">Unique Keys for DaysLastViewedByAdjusterClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DaysLastViewedBySupervisorClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysLastViewedBySupervisorClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_684" class="reftext" onclick='showAndHideRefBox("refbox_684", "reflink_684")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_684" class="refbox_inner" style="display:none;">
+Number of days since the supervisor last viewed the claim
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for DaysLastViewedBySupervisorClaimMetric"></a><div class="arraysbox">Unique Keys for DaysLastViewedBySupervisorClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DaysOpenClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DaysOpenClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_685" class="reftext" onclick='showAndHideRefBox("refbox_685", "reflink_685")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_685" class="refbox_inner" style="display:none;">
+Days Open
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for DaysOpenClaimMetric"></a><div class="arraysbox">Unique Keys for DaysOpenClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=DecimalClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">DecimalClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html" TARGET="tableFrame">ClaimMetric</A>)</span><span class='supername'> (delegates to <A HREF="DecimalMetricDelegate.html" TARGET="tableFrame">DecimalMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_686" class="reftext" onclick='showAndHideRefBox("refbox_686", "reflink_686")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_686" class="refbox_inner" style="display:none;">
+Decimal based claim metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="decimalclaimmetric_decimalvalue"></a>
+<p class="column">
+<span class="coltitle">DecimalValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "decimalmetric")'>decimalmetric</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Decimal field to store the value.</span>
+<a name="Unique Keys for DecimalClaimMetric"></a><div class="arraysbox">Unique Keys for DecimalClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=IntegerClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">IntegerClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html" TARGET="tableFrame">ClaimMetric</A>)</span><span class='supername'> (delegates to <A HREF="IntegerMetricDelegate.html" TARGET="tableFrame">IntegerMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_687" class="reftext" onclick='showAndHideRefBox("refbox_687", "reflink_687")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_687" class="refbox_inner" style="display:none;">
+Integer based claim metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="integerclaimmetric_integervalue"></a>
+<p class="column">
+<span class="coltitle">IntegerValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "integer")'>integer</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Integer field to store the value.</span>
+<a name="Unique Keys for IntegerClaimMetric"></a><div class="arraysbox">Unique Keys for IntegerClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=MoneyClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">MoneyClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html" TARGET="tableFrame">ClaimMetric</A>)</span><span class='supername'> (delegates to <A HREF="MoneyMetricDelegate.html" TARGET="tableFrame">MoneyMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_688" class="reftext" onclick='showAndHideRefBox("refbox_688", "reflink_688")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_688" class="refbox_inner" style="display:none;">
+Money based claim metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="moneyclaimmetric_moneyvalue"></a>
+<p class="column">
+<span class="coltitle">MoneyValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "currencyamount")'>currencyamount</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Money field to store the money value.</span>
+<a name="Unique Keys for MoneyClaimMetric"></a><div class="arraysbox">Unique Keys for MoneyClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=NetTotalIncurredClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">NetTotalIncurredClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#MoneyClaimMetric" TARGET="tableFrame">MoneyClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_689" class="reftext" onclick='showAndHideRefBox("refbox_689", "reflink_689")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_689" class="refbox_inner" style="display:none;">
+Total Incurred
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for NetTotalIncurredClaimMetric"></a><div class="arraysbox">Unique Keys for NetTotalIncurredClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=OpenEscalatedActivitiesClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">OpenEscalatedActivitiesClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#IntegerClaimMetric" TARGET="tableFrame">IntegerClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_690" class="reftext" onclick='showAndHideRefBox("refbox_690", "reflink_690")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_690" class="refbox_inner" style="display:none;">
+Number of Open Escalated Activities
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for OpenEscalatedActivitiesClaimMetric"></a><div class="arraysbox">Unique Keys for OpenEscalatedActivitiesClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=OverdueActivitiesClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">OverdueActivitiesClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#IntegerClaimMetric" TARGET="tableFrame">IntegerClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_691" class="reftext" onclick='showAndHideRefBox("refbox_691", "reflink_691")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_691" class="refbox_inner" style="display:none;">
+Overdue Activities
+</div>
+</span>
+</div>
+</div>
+<a name="overdueactivitiesclaimmetric_nextoverduetime"></a>
+<p class="column">
+<span class="exttitle">NextOverdueTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Time next activity will become overdue.</span>
+<a name="Unique Keys for OverdueActivitiesClaimMetric"></a><div class="arraysbox">Unique Keys for OverdueActivitiesClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html" TARGET="tableFrame">ClaimMetric</A>)</span><span class='supername'> (delegates to <A HREF="PercentMetricDelegate.html" TARGET="tableFrame">PercentMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_692" class="reftext" onclick='showAndHideRefBox("refbox_692", "reflink_692")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_692" class="refbox_inner" style="display:none;">
+Percent based claim metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="percentclaimmetric_percentvalue"></a>
+<p class="column">
+<span class="coltitle">PercentValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "percentagemetric")'>percentagemetric</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Percent field to store the value.</span>
+<a name="Unique Keys for PercentClaimMetric"></a><div class="arraysbox">Unique Keys for PercentClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentEscalatedActivitiesClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentEscalatedActivitiesClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#PercentClaimMetric" TARGET="tableFrame">PercentClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_693" class="reftext" onclick='showAndHideRefBox("refbox_693", "reflink_693")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_693" class="refbox_inner" style="display:none;">
+% of Escalated Activities
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for PercentEscalatedActivitiesClaimMetric"></a><div class="arraysbox">Unique Keys for PercentEscalatedActivitiesClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentIncurredLossCostsClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentIncurredLossCostsClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#PercentClaimMetric" TARGET="tableFrame">PercentClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_694" class="reftext" onclick='showAndHideRefBox("refbox_694", "reflink_694")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_694" class="refbox_inner" style="display:none;">
+Incurred Loss Costs as % of Net Total Incurred
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for PercentIncurredLossCostsClaimMetric"></a><div class="arraysbox">Unique Keys for PercentIncurredLossCostsClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentPaidLossCostsClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentPaidLossCostsClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#PercentClaimMetric" TARGET="tableFrame">PercentClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_695" class="reftext" onclick='showAndHideRefBox("refbox_695", "reflink_695")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_695" class="refbox_inner" style="display:none;">
+Paid Loss Costs as % of Total Paid
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for PercentPaidLossCostsClaimMetric"></a><div class="arraysbox">Unique Keys for PercentPaidLossCostsClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=PercentReserveChangeClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">PercentReserveChangeClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#PercentClaimMetric" TARGET="tableFrame">PercentClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_696" class="reftext" onclick='showAndHideRefBox("refbox_696", "reflink_696")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_696" class="refbox_inner" style="display:none;">
+% of Reserve Change from Initial Reserve
+</div>
+</span>
+</div>
+</div>
+<a name="percentreservechangeclaimmetric_initialreserve"></a>
+<p class="column">
+<span class="exttitle">InitialReserve</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "decimal")'>decimal</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Initial Reserve Amount of the Claim.</span>
+<a name="percentreservechangeclaimmetric_totalreservechange"></a>
+<p class="column">
+<span class="exttitle">TotalReserveChange</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "decimal")'>decimal</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Total Reserve Amount change</span>
+<a name="Unique Keys for PercentReserveChangeClaimMetric"></a><div class="arraysbox">Unique Keys for PercentReserveChangeClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=ReserveChangeCountClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">ReserveChangeCountClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#IntegerClaimMetric" TARGET="tableFrame">IntegerClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_697" class="reftext" onclick='showAndHideRefBox("refbox_697", "reflink_697")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_697" class="refbox_inner" style="display:none;">
+Number of Reserve Changes
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for ReserveChangeCountClaimMetric"></a><div class="arraysbox">Unique Keys for ReserveChangeCountClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TimeBasedClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TimeBasedClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html" TARGET="tableFrame">ClaimMetric</A>)</span><span class='supername'> (delegates to <A HREF="TimeBasedMetricDelegate.html" TARGET="tableFrame">TimeBasedMetricDelegate</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_698" class="reftext" onclick='showAndHideRefBox("refbox_698", "reflink_698")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_698" class="refbox_inner" style="display:none;">
+Time based claim metric.
+</div>
+</span>
+</div>
+<div class="desc">Attributes: Abstract<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>Abstract</b><br>The entity is a supertype, but all instances of it must be one of its subtypes. That is, you cannot instantiate the supertype entity itself. An abstract entity is appropriate when the supertype serves only to collect logic or common fields, but does not make sense to exist on its own.')">?</span></sup></div>
+</div>
+<a name="timebasedclaimmetric_integervalue"></a>
+<p class="column">
+<span class="coltitle">IntegerValue</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "integer")'>integer</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Integer field to store the value.</span>
+<a name="timebasedclaimmetric_isopen"></a>
+<p class="column">
+<span class="coltitle">IsOpen</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: true)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">The value of an open time based metric is now - start time, once closed it has a fixed integer value</span>
+<a name="timebasedclaimmetric_skipped"></a>
+<p class="column">
+<span class="coltitle">Skipped</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "bit")'>bit</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(default: false)&nbsp;&nbsp;&nbsp;&nbsp;(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">True if the metric is closed because the normal closing event was skipped.</span>
+<a name="timebasedclaimmetric_starttime"></a>
+<p class="column">
+<span class="coltitle">StartTime</span>&nbsp;&nbsp;<span class="titleDesc"><span class='defPopupLink' onClick='popupDefinition(event, "datetime")'>datetime</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+<span class = "spaceandsize">(exportable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>exportable</b><br>The entity is available to the SOAP APIs.')">?</span></sup>&nbsp;&nbsp;&nbsp;&nbsp;(writable)<sup><span class='glossaryLink' onclick="popupDefinition(event, '<b>writable</b><br>The property can be written to via Gosu or the IDataObjectAPI.')">?</span></sup></span>
+<br>
+<span class="desc">Starting time of the metric.</span>
+<a name="Unique Keys for TimeBasedClaimMetric"></a><div class="arraysbox">Unique Keys for TimeBasedClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TimeToFirstPaymentClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TimeToFirstPaymentClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#TimeBasedClaimMetric" TARGET="tableFrame">TimeBasedClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_699" class="reftext" onclick='showAndHideRefBox("refbox_699", "reflink_699")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_699" class="refbox_inner" style="display:none;">
+Time to First Loss Payment
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for TimeToFirstPaymentClaimMetric"></a><div class="arraysbox">Unique Keys for TimeToFirstPaymentClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<div class='subtypebox'>
+<a name=TotalPaidClaimMetric></a>
+<div class="titlebox">
+<div class="filtertitle">TotalPaidClaimMetric <span class='supername'>(subtype of <A HREF="ClaimMetric.html#MoneyClaimMetric" TARGET="tableFrame">MoneyClaimMetric</A>)</span> <span class="entityname"></span></div>
+<div class="desc">
+<span id="reflink_700" class="reftext" onclick='showAndHideRefBox("refbox_700", "reflink_700")'><img src="../../res/blackup.gif" border="0"><b>Description</b></span>
+<div id="refbox_700" class="refbox_inner" style="display:none;">
+Paid
+</div>
+</span>
+</div>
+</div>
+<a name="Unique Keys for TotalPaidClaimMetric"></a><div class="arraysbox">Unique Keys for TotalPaidClaimMetric</div>
+<span class="desc">A unique key is a combination of fields that must be unique, i.e. there can't be two rows in the table that have the same value for every field in the key.</span>
+<br/>
+<table class="typelistbody" border="1" CELLPADDING="2" CELLSPACING="0">
+<tr class="typelistheader">
+<td>Index</td>
+<td>Included Columns</td>
+</tr>
+<tr><td>claimmetric1a</td>
+<td>PublicID</td></tr>
+</table>
+<p class="desc"></p>
+</div>
+<script language="JavaScript">
+function showAllUIDetails() {
+showUIDetails('UITable_0', 'showhideUI_0');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Hide user interface details on all fields';
+  link.onclick = hideAllUIDetails;
+  return false;
+}
+function hideAllUIDetails() {
+hideUIDetails('UITable_0', 'showhideUI_0');
+var link = document.getElementById('showAllElements');
+  link.innerHTML = 'Show user interface details on all fields';
+  link.onclick = showAllUIDetails;
+  return false;
+}
+</script>
+
+</body>
+</html>
