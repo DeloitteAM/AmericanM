@@ -1,0 +1,10 @@
+L_EN_US,PRIORITY,TYPECODE,S_EN_US,RETIRED,NAME,ID,DESCRIPTION
+Claim available reserves,-1,car,0,0,Claim available reserves,1,The available reserves for all exposures on a claim
+Claim payments to date,-1,cptd,1,0,Claim payments to date,2,The total amount of payments to date for the claim
+Claim total reserves,-1,ctr,2,0,Claim total reserves,3,The total reserves for all exposures on a claim
+Exposure available reserves,-1,ear,3,0,Exposure available reserves,4,The available reserves for a single exposure
+Exposure payments to date,-1,eptd,4,0,Exposure payments to date,5,The total amount of payments to date for a single exposure
+Exposure total reserves,-1,etr,5,0,Exposure total reserves,6,The total reserves for a single exposure
+Payment amount,-1,pa,6,0,Payment amount,7,The amount of a single payment
+Payments exceed reserves,-1,per,7,0,Payments exceed reserves,8,The amount by which payments are allowed to exceed reserves on a claim
+Reserve change size,-1,rcs,8,0,Reserve change size,9,The size of a single reserve change

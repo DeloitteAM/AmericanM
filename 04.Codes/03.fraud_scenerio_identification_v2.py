@@ -16,6 +16,7 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import numpy as np
 
+os.chdir('C:\\Users\\dmiglani\\Desktop\\ModernAmerican')
 
 ################################## Thresold ##############################################
 Thresold_Address_Fuzzy_Match = 75
@@ -38,10 +39,13 @@ pwd = config['Oracle_Connect']['Password']
 del config
 
 ################################### Set Project Directory ##############################
+os.chdir(proj_path + '/04.Codes/Functions')
+from preprocess import column_preprocess
 os.chdir(proj_path)
 
 intermediate_dir_path = proj_path + "/05.Intertmediate/"
 del proj_path
+
 
 ################################## Connect to oracle DB ################################
 conn_str = user + "/" + pwd + "@" + host + ":" + port + "/" + db
@@ -80,6 +84,15 @@ query = 'select * from cc_reserveline'
 cc_reserveline = pd.read_sql(query,con = conn)
 query = 'select * from cc_claimcontact'
 cc_claimcontact = pd.read_sql(query,con = conn)
+query = 'select * from cc_user'
+cc_user = pd.read_sql(query,con = conn)
+query = 'select * from cc_authorityprofile'
+cc_authorityprofile = pd.read_sql(query,con = conn)
+query = 'select * from cc_authoritylimit'
+cc_authoritylimit = pd.read_sql(query,con = conn)
+query = 'select * from cctl_authoritylimittype'
+cctl_authoritylimittype = pd.read_sql(query,con = conn)
+
 
 del query
 
@@ -98,15 +111,29 @@ cctl_losscause.to_csv(intermediate_dir_path + "cctl_losscause.csv", encoding='ut
 cc_transactionlineitem.to_csv(intermediate_dir_path + "cc_transactionlineitem.csv", encoding='utf-8', index=False)
 cc_reserveline.to_csv(intermediate_dir_path + "cc_reserveline.csv", encoding='utf-8', index=False)
 cc_claimcontact.to_csv(intermediate_dir_path + "cc_claimcontact.csv", encoding='utf-8', index=False)
-
+cc_user.to_csv(intermediate_dir_path + "cc_user.csv", encoding='utf-8', index=False)
+cc_authorityprofile.to_csv(intermediate_dir_path + "cc_authorityprofile.csv", encoding='utf-8', index=False)
+cc_authoritylimit.to_csv(intermediate_dir_path + "cc_authoritylimit.csv", encoding='utf-8', index=False)
+cctl_authoritylimittype.to_csv(intermediate_dir_path + "cctl_authoritylimittype.csv", encoding='utf-8', index=False)
 
 cc_claim2 = cc_claim.copy()
+cc_Incident2 = cc_Incident.copy()
+cc_transaction2 = cc_transaction.copy()
+cc_activity2 = cc_activity.copy()
+cctl_incident2 = cctl_incident.copy()
 cc_address2 = cc_address.copy()
 cc_policy2 = cc_policy.copy()
 cc_check2 = cc_check.copy()
 cc_exposure2 = cc_exposure.copy()
 cc_contact2 = cc_contact.copy()
 cc_claimcontact2 = cc_claimcontact.copy()
+cctl_losscause2 = cctl_losscause.copy()
+cc_transactionlineitem2 = cc_transactionlineitem.copy()
+cc_reserveline2 = cc_reserveline.copy()
+cc_user2 = cc_user.copy()
+cc_authorityprofile2 = cc_authorityprofile.copy()
+cc_authoritylimit2 = cc_authoritylimit.copy()
+cctl_authoritylimittype2 = cctl_authoritylimittype.copy()
 
 
 ############################### Select Desired Columns in Datatables ############################
@@ -137,32 +164,40 @@ cc_exposure.rename(columns={'CLAIMANTDENORMID':'CONTACTID'}, inplace=True)
 
 cc_claim.rename(columns={'ID':'CLAIMID'}, inplace=True)
 
-cc_address['ADDRESSLINE1']= cc_address['ADDRESSLINE1'].astype(str)
-cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.upper()
-cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('[^A-Za-z]+\s', '')
-cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('.', '')
+cc_address = column_preprocess(cc_address, ['ADDRESSLINE1'])
+#cc_address['ADDRESSLINE1']= cc_address['ADDRESSLINE1'].astype(str)
+#cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.upper()
+#cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('[^A-Za-z]+\s', '')
+#cc_address['ADDRESSLINE1'] = cc_address['ADDRESSLINE1'].str.replace('.', '')
 
-
-cc_check['PAYTO']= cc_check['PAYTO'].astype(str)
-cc_check['PAYTO'] = cc_check['PAYTO'].str.upper()
-cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('[^A-Za-z]+\s', '')
-cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('.', '')
+cc_check = column_preprocess(cc_check, ['PAYTO'])
+#cc_check['PAYTO']= cc_check['PAYTO'].astype(str)
+#cc_check['PAYTO'] = cc_check['PAYTO'].str.upper()
+#cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('[^A-Za-z]+\s', '')
+#cc_check['PAYTO'] = cc_check['PAYTO'].str.replace('.', '')
 
 
 cc_transaction.rename(columns={'ID':'TRANSACTIONID'}, inplace=True)
 cc_transaction['CREATETIME'] = pd.to_datetime(cc_transaction["CREATETIME"])
 
 
-
-
 cc_contact.rename(columns={'ID':'CONTACTID'}, inplace=True)
 cc_claimcontact.rename(columns={'ID':'CLAIMCONTACTID'}, inplace=True)
+
+#cc_contact.columns.values
+#cc_contact['FIRSTNAME']= cc_contact['FIRSTNAME'].astype(str)
+#cc_contact['FIRSTNAME'] = cc_contact['FIRSTNAME'].str.upper()
+#cc_contact['FIRSTNAME'] = cc_contact['FIRSTNAME'].str.replace('[^A-Za-z]+\s', '')
+#cc_contact['FIRSTNAME'] = cc_contact['FIRSTNAME'].str.replace('.', '')
+
+cc_contact = column_preprocess(cc_contact,['FIRSTNAME', 'LASTNAME', 'NAME'])
+
 
 ################## Merge Data Tables ############################################################
 cc_claim = cc_claim.merge(cc_address, 'left', left_on = 'LOSSLOCATIONID', right_on = 'ID')
 cc_claim = cc_claim.merge(cc_policy, 'left', left_on = 'POLICYID', right_on = 'ID')
-
 cc_check = cc_check.merge(cc_claimcontact, 'left')
+
 #################### Number of approavals for each claim #########################################
 multiple_approvals = cc_activity.groupby('CLAIMID').agg({'UPDATEUSERID': 'nunique'})
 multiple_approvals_grp = multiple_approvals.groupby('UPDATEUSERID').agg({'UPDATEUSERID': 'count'})
@@ -210,6 +245,8 @@ del Thresold_Address_Fuzzy_Match, x
 
 ######################## Fraud Scenerio 3 : Manual Cheque Fraud #######################################################
 
+### Need to do by adjustor level : #####################################
+### Compare the manual payment across adjustors (identify outliers)
 
 cc_check = cc_check.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID']], 'left')
 
@@ -224,6 +261,7 @@ cc_check_grp.rename(columns={'REPORTABLEAMOUNT':'Ttl_REPORTABLEAMOUNT'}, inplace
 cc_check_manual = cc_check_manual.merge(cc_check_grp, 'left')
 del cc_check_grp
 cc_check_manual = cc_check_manual.loc[cc_check_manual['PAYMENTMETHOD'] == 1]
+
 cc_check_manual['PercentageManual'] = 100 * cc_check_manual['REPORTABLEAMOUNT'] / cc_check_manual['Ttl_REPORTABLEAMOUNT']
 
 
@@ -258,9 +296,11 @@ receiver_amt_dat = cc_check.groupby(['PAYTO'], as_index = False).agg({'REPORTABL
 ##################### Fraud 4b : Adjustor- Claimant Pair Insured Pair #################################################
 
 
-pair_adjustor_claimant = cc_check.groupby(['CONTACTID','ASSIGNEDUSERID'], as_index = False).agg({\
-                                         'REPORTABLEAMOUNT' : 'sum', 'CLAIMID' : 'nunique'})
 
+cc_check = cc_check.merge(cc_contact[['CONTACTID', 'FIRSTNAME', 'LASTNAME', 'NAME']], 'left')
+
+pair_adjustor_claimant = cc_check.groupby(['ASSIGNEDUSERID', 'FIRSTNAME', 'LASTNAME', 'NAME'], as_index = False).agg({\
+                                         'REPORTABLEAMOUNT' : 'sum', 'CLAIMID' : 'nunique'})
 
 pair_adjustor_claimant = pair_adjustor_claimant.sort_values('REPORTABLEAMOUNT', ascending=False)
 pair_adjustor_claimant.rename(columns={'CLAIMID':'count_CLAIMID'}, inplace=True)
@@ -271,7 +311,7 @@ cc_claim_f4b = pair_adjustor_claimant.loc[
         pair_adjustor_claimant['REPORTABLEAMOUNT'] >= Thresold_Percentile]
 
 
-claimant_amt_dat = cc_check.groupby(['CONTACTID'], as_index = False).agg({'REPORTABLEAMOUNT' : 'sum'})
+claimant_amt_dat = cc_check.groupby([ 'FIRSTNAME', 'LASTNAME', 'NAME'], as_index = False).agg({'REPORTABLEAMOUNT' : 'sum'})
 
 
 
@@ -297,45 +337,75 @@ cc_contact.columns.values
 ###############################################################################################
 ##################### Fraud : Adjustor approving more than claim ##############################
 
-reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2]
-reserve_dat.columns.values
+## Get Claimed Amount for each claimant and claim
+reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2] ### Only keep reserve data
 reserve_dat = reserve_dat[['CREATETIME', 'CLAIMID','EXPOSUREID', 'TRANSACTIONID', 'CLAIMCONTACTID']]
 
-reserve_dat['CLAIMID'].nunique()
-reserve_dat[['CLAIMID', 'EXPOSUREID']].nunique()
-reserve_dat.groupby(['CLAIMID', 'EXPOSUREID']).ngroups
+#reserve_dat['CLAIMID'].nunique()
+#reserve_dat[['CLAIMID', 'EXPOSUREID']].nunique()
+#reserve_dat.groupby(['CLAIMID', 'EXPOSUREID']).ngroups
 
-reserve_dat = reserve_dat.sort_values('CREATETIME', ascending = True)
-reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], as_index = False).first()
+reserve_dat = reserve_dat.sort_values('CREATETIME', ascending = True) #order the reserves
+reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], as_index = False).first() #keep only first reserve
 reserve_first['TRANSACTIONID'].nunique()
+#
+#cc_transactionlineitem['TRANSACTIONID'].nunique()
 
-cc_transactionlineitem['TRANSACTIONID'].nunique()
 
+##  For Non reserve transaction, multiple entries possible in cc_transactionlineitem
 amt_claimed = cc_transactionlineitem.groupby('TRANSACTIONID', as_index = False).agg({'REPORTINGAMOUNT' : 'sum'})
 
-reserve_first = reserve_first.merge(amt_claimed, 'left')
-reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 'left')
+reserve_first = reserve_first.merge(amt_claimed, 'left') #get the claimed amount
+reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 'left') # get claimant id
 
+reserve_first = reserve_first.merge(cc_contact[['CONTACTID', 'FIRSTNAME', 'LASTNAME', 'NAME']], 'left') # get claimant info
 
-amt_claimant_received = cc_check.groupby(['CLAIMID', 'CONTACTID'], as_index = False).agg(\
+## Amt received by claimant on each claim
+amt_claimant_received = cc_check.groupby(['CLAIMID', 'FIRSTNAME', 'LASTNAME','NAME'], as_index = False).agg(\
                                         {'REPORTABLEAMOUNT' : 'sum'})
 
+## Merging amount received and claimed together
 payment_claimed_dat = reserve_first.merge(amt_claimant_received, 'left')
 
 payment_claimed_dat = payment_claimed_dat.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID']], 'left')
-
-payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'CONTACTID', 'ASSIGNEDUSERID',\
+payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'FIRSTNAME', 'LASTNAME', 'NAME', 'ASSIGNEDUSERID',\
                                           'REPORTINGAMOUNT', 'REPORTABLEAMOUNT']]
 
-payment_claimed_dat['Claim_Approve_Ratio'] = payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat[\
-                   'REPORTINGAMOUNT']
-
+## fill 0 for payment amount not available
+payment_claimed_dat.fillna(0, inplace= True)
+payment_claimed_dat['Claim_Approve_Ratio'] = payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat['REPORTINGAMOUNT']
 
 payment_claimed_f6 = payment_claimed_dat.loc[payment_claimed_dat['Claim_Approve_Ratio'] > 1]
 
+payment_claimed_grp = payment_claimed_f6.groupby('ASSIGNEDUSERID', as_index = False).agg({ \
+        'REPORTINGAMOUNT' : 'sum', 'REPORTABLEAMOUNT' : 'sum', 'Claim_Approve_Ratio' : 'mean'})
 
 
+##################### Fraud : Claimant approved by a particular Approval more often ##############################    
+    
+claimant_approval_pair = payment_claimed_dat.groupby(['ASSIGNEDUSERID', 'FIRSTNAME', 'LASTNAME', 'NAME'], \
+                                                     as_index = False).agg({\
+                                                                     'REPORTINGAMOUNT' : 'sum',
+                                                                     'REPORTABLEAMOUNT' : 'sum'})
+    
+claimant_approval_pair['Claim_Approve_Ratio'] = claimant_approval_pair['REPORTABLEAMOUNT']/claimant_approval_pair[\
+                   'REPORTINGAMOUNT']
 
+claimant_dat = payment_claimed_dat.groupby(['FIRSTNAME', 'LASTNAME', 'NAME'], as_index = False).agg({\
+                                                                     'REPORTINGAMOUNT' : 'sum',
+                                                                     'REPORTABLEAMOUNT' : 'sum'})
+    
+claimant_dat['Claimant_Avg_Claim_Approve_Ratio'] = claimant_dat['REPORTABLEAMOUNT']/claimant_dat['REPORTINGAMOUNT']
+
+claimant_approval_pair = claimant_approval_pair.merge(claimant_dat[['FIRSTNAME', 'LASTNAME', 'NAME', \
+                                                                    'Claimant_Avg_Claim_Approve_Ratio']],'left')
+
+
+claimant_approval_pair['RskVariable_Approve_Ratio'] = claimant_approval_pair['Claim_Approve_Ratio'] - claimant_approval_pair['Claimant_Avg_Claim_Approve_Ratio']
+    
+claimant_approval_pair_f7 = claimant_approval_pair.loc[claimant_approval_pair['RskVariable_Approve_Ratio'] > 0]
+    
+    
 ######################################### 
 #select CLAIMANTDENORMID,ClaimID from cc_exposure;
 #

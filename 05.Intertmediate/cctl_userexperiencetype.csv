@@ -1,0 +1,4 @@
+L_EN_US,PRIORITY,TYPECODE,S_EN_US,RETIRED,NAME,ID,DESCRIPTION
+High,-1,high,0,0,High,10001,Expert
+Low,-1,low,1,0,Low,10002,Novice
+Mid,-1,mid,2,0,Mid,10003,Average

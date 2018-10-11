@@ -1,0 +1,37 @@
+LOADCOMMANDID,CREATEUSERID,PUBLICID,BEANVERSION,RETIRED,CREATETIME,NAME,UPDATEUSERID,CUSTOM,CURRENCY,UPDATETIME,ID,DESCRIPTION
+,,default_data:1,0,0,2017-11-22 17:16:37.099,Adjuster,,0,10001,2017-11-22 17:16:37.099,1,Adjuster default authority
+,,default_data:2,0,0,2017-11-22 17:16:37.099,Claims Supervisor,,0,10001,2017-11-22 17:16:37.099,2,Claims supervisor default authority
+,,default_data:3,0,0,2017-11-22 17:16:37.099,Regional Supervisor,,0,10001,2017-11-22 17:16:37.099,3,Regional supervisor default authority
+,,PICCAuthLimPro:1,3,0,2017-11-22 17:18:33.917,Adjuster,3.0,0,10001,2018-08-02 15:30:57.167,4,Adjuster authority
+,,PICCAuthLimPro:2,3,0,2017-11-22 17:18:33.917,Claim Intern,3.0,0,10001,2018-08-02 15:30:57.167,5,Claim Intern authority
+,,PICCAuthLimPro:3,3,0,2017-11-22 17:18:33.917,Claim Manager,3.0,0,10001,2018-08-02 15:30:57.167,6,Claim Manager authority
+,,PICCAuthLimPro:4,3,0,2017-11-22 17:18:33.917,Claim Recovery Manager,3.0,0,10001,2018-08-02 15:30:57.167,7,Claim Recovery Manager authority
+,,PICCAuthLimPro:5,3,0,2017-11-22 17:18:33.917,Claim Recovery Specialist,3.0,0,10001,2018-08-02 15:30:57.167,8,Claim Recovery Specialist authority
+,,PICCAuthLimPro:6,3,0,2017-11-22 17:18:33.917,Claim Trainee,3.0,0,10001,2018-08-02 15:30:57.167,9,Claim Trainee authority
+,,PICCAuthLimPro:7,3,0,2017-11-22 17:18:33.917,Commercial Lines Claim Representative I,3.0,0,10001,2018-08-02 15:30:57.167,10,Commercial Lines Claim Representative I authority
+,,PICCAuthLimPro:8,3,0,2017-11-22 17:18:33.917,Director of Claims,3.0,0,10001,2018-08-02 15:30:57.167,11,Director of Claims authority
+,,PICCAuthLimPro:9,3,0,2017-11-22 17:18:33.917,Litigation Specialist,3.0,0,10001,2018-08-02 15:30:57.167,12,Litigation Specialist authority
+,,PICCAuthLimPro:10,3,0,2017-11-22 17:18:33.917,National Claims Specialist,3.0,0,10001,2018-08-02 15:30:57.167,13,National Claims Specialist authority
+,,PICCAuthLimPro:11,3,0,2017-11-22 17:18:33.917,Personal Lines Claim Representative I,3.0,0,10001,2018-08-02 15:30:57.167,14,Personal Lines Claim Representative I authority
+,,PICCAuthLimPro:12,3,0,2017-11-22 17:18:33.917,Personal Lines Claim Representative II,3.0,0,10001,2018-08-02 15:30:57.167,15,Personal Lines Claim Representative II authority
+,,PICCAuthLimPro:13,3,0,2017-11-22 17:18:33.917,Physical Damage Specialist,3.0,0,10001,2018-08-02 15:30:57.167,16,Physical Damage Specialist authority
+,,PICCAuthLimPro:14,3,0,2017-11-22 17:18:33.917,Regional Claim Manager,3.0,0,10001,2018-08-02 15:30:57.167,17,Regional Claim Manager authority
+,,PICCAuthLimPro:15,3,0,2017-11-22 17:18:33.917,Senior Adjuster,3.0,0,10001,2018-08-02 15:30:57.167,18,Senior Adjuster authority
+,,PICCAuthLimPro:16,3,0,2017-11-22 17:18:33.917,SIU Specialist,3.0,0,10001,2018-08-02 15:30:57.167,19,SIU Specialist authority
+,,PICCAuthLimPro:17,3,0,2017-11-22 17:18:33.917,Subrogation Specialist,3.0,0,10001,2018-08-02 15:30:57.167,20,Subrogation Specialist authority
+,,PICCAuthLimPro:18,1,0,2017-11-22 17:18:33.917,Workers Compensation Claim Representative,3.0,0,10001,2018-08-02 15:30:57.167,21,Workers Compensation Claim Representative authority
+,,PICCAuthLimPro:19,1,0,2017-11-22 17:18:33.917,Workers Compensation Manager,3.0,0,10001,2018-08-02 15:30:57.167,22,Workers Compensation Manager authority
+,,PICCAuthLimPro:20,1,0,2017-11-22 17:18:33.917,Workers Compensation Specialist,3.0,0,10001,2018-08-02 15:30:57.167,23,Workers Compensation Specialist authority
+,,PICCAuthLimPro:21,3,0,2017-11-22 17:18:33.917,Property Specialist,3.0,0,10001,2018-08-02 15:30:57.167,24,Property Specialist authority
+,,PICCAuthLimPro:23,3,0,2017-11-22 17:18:33.917,Commercial Lines Claim Representative II,3.0,0,10001,2018-08-02 15:30:57.167,25,Commercial Lines Claim Representative II authority
+,,PICCAuthLimPro:24,10,0,2017-11-22 17:18:33.917,Vice President,3.0,0,10001,2018-08-08 18:53:52.023,26,Vice President authority
+,,PICCAuthLimPro:25,6,0,2017-11-22 17:18:33.917,Director of Claims Litigation,3.0,0,10001,2018-08-06 19:22:31.585,27,Director of Claims Litigation authority
+,,PICCAuthLimPro:26,3,0,2017-11-22 17:18:33.917,Agency Draft,3.0,0,10001,2018-08-02 15:30:57.167,28,Agency Draft Authority
+,,PICCAuthLimPro:27,3,0,2017-11-22 17:18:33.917,Claim Support,3.0,0,10001,2018-08-02 15:30:57.167,29,Claim Support Authority
+,3.0,cc:101,0,0,2018-06-20 08:46:25.896,Custom,3.0,1,10001,2018-06-20 08:46:25.896,101,Custom Profile
+,3.0,PICCAuthLimPro:28,1,0,2018-07-13 11:28:09.361,Property Manager,3.0,0,10001,2018-08-02 15:30:57.167,201,Property Manager Authority
+,3.0,cc:202,3,202,2018-07-13 13:57:04.701,Custom,3.0,1,10001,2018-07-13 14:09:20.059,202,Custom Profile
+,3.0,cc:203,15,203,2018-07-13 14:09:20.059,Custom,3.0,1,10001,2018-07-31 16:42:38.200,203,Custom Profile
+,3.0,cc:301,2,301,2018-08-02 06:09:45.428,Custom,3.0,1,10001,2018-08-06 19:28:23.115,301,Custom Profile
+,3.0,cc:401,0,0,2018-08-09 17:32:00.913,Custom,3.0,1,10001,2018-08-09 17:32:00.913,401,Custom Profile
+,3.0,cc:501,0,0,2018-09-03 05:37:52.421,Custom,3.0,1,10001,2018-09-03 05:37:52.421,501,Custom Profile
