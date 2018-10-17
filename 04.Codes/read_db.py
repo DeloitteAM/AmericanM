@@ -63,7 +63,22 @@ cc_region = pd.read_sql(query,con = conn)
 query = 'select * from cc_region_zone'
 cc_region_zone = pd.read_sql(query,con = conn)
 
+query = 'select * from cc_catastrophezone'
+cc_catastrophezone = pd.read_sql(query,con = conn)
+query = 'select * from cctl_zonetype'
+cctl_zonetype = pd.read_sql(query,con = conn)
+
+query = 'select * from cc_catastrophe'
+cc_catastrophe = pd.read_sql(query,con = conn)
+
+query = 'select * from cc_catastrophe where id in '
+cc_catastrophe2 = pd.read_sql(query,con = conn)
+
  
+#select * from cc_catastrophe where 
+# ID in(select catastropheID from cc_claim where catastropheID is not null) 
+ 
+
 
 #cc_claim = pd.read_csv(intermediate_dir_path + "cc_claim.csv")
 #cc_Incident = pd.read_csv(intermediate_dir_path + "cc_Incident.csv")

@@ -54,7 +54,7 @@ intermediate_dir_path = proj_path + "/05.Intertmediate/Pekin/"
 del proj_path
 
 ################################## Connect to oracle DB #######################
-#conn_str = user + "/" + pwd + "@" + host + ":" + port + "/" + db
+conn_str = user + "/" + pwd + "@" + host + ":" + port + "/" + db
 conn_str = 'ClAIMUSER' + "/" + pwd + "@" + host + ":" + port + "/" + 'CCDatabase'
 conn = cx_Oracle.connect(conn_str)
 
@@ -261,55 +261,55 @@ approvals_summary = approvals_summary.groupby('NumApprovals', as_index = False).
 
 approvals_summary['Avg_Payment'] = approvals_summary['Payment']/approvals_summary['NumClaims']
 
-#approvals_summary.to_csv(intermediate_dir_path + "Visualization/Pekin_approval_freq.csv", 
-#                   encoding='utf-8', index=False)
-
-##  Visualization : Distribution of Number of Approvals 
-labels = approvals_summary['NumApprovals']
-values = approvals_summary['NumClaims']
-colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
-
-trace = go.Pie(labels=labels, values=values,
-               hoverinfo='value', textinfo='percent', sort = False,
-               textfont=dict(size=20),
-               marker=dict(colors=colors, 
-                           line=dict(color='#000000', width=2)))
-
-data = [trace]
-layout = Layout(
-    title = "Distribution of Number of Approvals",
-    showlegend=True,
-    height=600,
-    width=600
-)
-
-fig = dict( data=data, layout=layout )
-
-plot(fig)  
-
-
-## Visulaization Dollar
-labels = approvals_summary['NumApprovals']
-values = approvals_summary['Payment']
-colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
-
-trace = go.Pie(labels=labels, values=values,
-               hoverinfo='value', textinfo='percent', sort = False,
-               textfont=dict(size=20),
-               marker=dict(colors=colors, 
-                           line=dict(color='#000000', width=2)))
-
-data = [trace]
-layout = Layout(
-    title = "Distribution of Number of Approvals (Dolarwise) ",
-    showlegend=True,
-    height=600,
-    width=600
-)
-
-fig = dict( data=data, layout=layout )
-
-plot(fig)  
+##approvals_summary.to_csv(intermediate_dir_path + "Visualization/Pekin_approval_freq.csv", 
+##                   encoding='utf-8', index=False)
+#
+###  Visualization : Distribution of Number of Approvals 
+#labels = approvals_summary['NumApprovals']
+#values = approvals_summary['NumClaims']
+#colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
+#
+#trace = go.Pie(labels=labels, values=values,
+#               hoverinfo='value', textinfo='percent', sort = False,
+#               textfont=dict(size=20),
+#               marker=dict(colors=colors, 
+#                           line=dict(color='#000000', width=2)))
+#
+#data = [trace]
+#layout = Layout(
+#    title = "Distribution of Number of Approvals",
+#    showlegend=True,
+#    height=600,
+#    width=600
+#)
+#
+#fig = dict( data=data, layout=layout )
+#
+#plot(fig)  
+#
+#
+### Visulaization Dollar
+#labels = approvals_summary['NumApprovals']
+#values = approvals_summary['Payment']
+#colors = ['#FEBFB3', '#E1396C', '#96D38C', '#D0F9B1']
+#
+#trace = go.Pie(labels=labels, values=values,
+#               hoverinfo='value', textinfo='percent', sort = False,
+#               textfont=dict(size=20),
+#               marker=dict(colors=colors, 
+#                           line=dict(color='#000000', width=2)))
+#
+#data = [trace]
+#layout = Layout(
+#    title = "Distribution of Number of Approvals (Dolarwise) ",
+#    showlegend=True,
+#    height=600,
+#    width=600
+#)
+#
+#fig = dict( data=data, layout=layout )
+#
+#plot(fig)  
 
 ######################## Fraud Scenerio 3 : Manual Cheque Fraud ###############
 
@@ -354,26 +354,26 @@ f3_claim = cc_claim.merge(approval_manual_pymt, 'inner')
 
 del Thresold_Perc_Manual_Payment
 
-## Visulaization
-
-trace = go.Histogram(
-    x=approval_manual_pymt['PercentageManual'],
-    xbins = dict(start=0,end=25,size=5),
-    autobinx = False, 
-    marker = dict(color='#EB89B5'),
-    opacity=0.75
-)
-data = [trace]
-layout = Layout(
-    title = "Manual Check Percentage",
-    showlegend=False,
-    height=600,
-    width=600
-)
-
-fig = dict( data=data, layout=layout )
-
-plot(fig)  
+### Visulaization
+#
+#trace = go.Histogram(
+#    x=approval_manual_pymt['PercentageManual'],
+#    xbins = dict(start=0,end=25,size=5),
+#    autobinx = False, 
+#    marker = dict(color='#EB89B5'),
+#    opacity=0.75
+#)
+#data = [trace]
+#layout = Layout(
+#    title = "Manual Check Percentage",
+#    showlegend=False,
+#    height=600,
+#    width=600
+#)
+#
+#fig = dict( data=data, layout=layout )
+#
+#plot(fig)  
 
 ################ Fraud 5 : Adjustor Overpaying for certain cause ##############
 
@@ -408,26 +408,78 @@ f5_summary = f5_summary.sort_values('ExcessPaidAmt', ascending = False) #order t
 
 
 
-##  Visualization 
-
-
-trace = go.Bar(x = f5_summary['LOSSDESCRIPTION'],
-              y = f5_summary['ExcessPaidAmt'])
-          
-
-data = [trace]
-layout = Layout(title = "Cause v/s Extra Payment Done",
-                height=600, width=600,)
-
-fig = dict( data=data, layout=layout )
-
-plot(fig)  
+###  Visualization 
+#trace = go.Bar(x = f5_summary['LOSSDESCRIPTION'],
+#              y = f5_summary['ExcessPaidAmt'])
+#          
+#
+#data = [trace]
+#layout = Layout(title = "Cause v/s Extra Payment Done",
+#                height=600, width=600,)
+#
+#fig = dict( data=data, layout=layout )
+#
+#plot(fig)  
 
 
 
 ############### Adjustor - Vendor Pair ########################################
 cc_check.columns.values
-f1_adj_ven = cc_check.groupby(['LOSS_POSTALCODE','LOSSCAUSE', 
+
+## Fuzzy Match
+adjustor_payto = cc_check.groupby(['LastAssignedUser'], 
+                                  as_index = False).\
+                                  agg({'PAYTO' : 'unique'})                                  
+adjustor_payto.rename(columns={'PAYTO':'all_PAYTO'}, inplace=True)
+adjustor_payto['all_PAYTO'] = adjustor_payto['all_PAYTO'].astype(tuple)
+
+
+pair_adjustor_receiver = cc_check.groupby(['LastAssignedUser', 'PAYTO'], 
+                                          as_index = False).\
+                                          agg({'REPORTABLEAMOUNT' : 'sum', 
+                                               'CLAIMID' : 'nunique'})
+
+pair_adjustor_receiver = pair_adjustor_receiver.merge(adjustor_payto)
+
+pair_adjustor_receiver['FuzzyPayTo'] = ''
+pair_adjustor_receiver['FuzzyPayToScore'] = np.nan
+
+pair_adjustor_receiver['Replaced_With'] = ''
+x = 1
+
+
+
+for x in range(len(pair_adjustor_receiver.index)) :
+    pay_to = pair_adjustor_receiver['PAYTO'][x]
+    pay_to_same_adjustor = pair_adjustor_receiver['all_PAYTO'][x]
+    temp = process.extract(pay_to, pay_to_same_adjustor,
+                           scorer = fuzz.token_sort_ratio)
+    if (len(temp) > 1):
+        temp = temp[1]
+        pair_adjustor_receiver.loc[x, 'FuzzyPayTo'] = temp[0]
+        pair_adjustor_receiver.loc[x, 'FuzzyPayToScore'] = temp[1]
+        
+Thresold_fuzzy = 83
+fuzzy_pair = pair_adjustor_receiver.loc[pair_adjustor_receiver['FuzzyPayToScore'] >= \
+                                        Thresold_fuzzy]
+
+fuzzy_pair = fuzzy_pair[['PAYTO', 'FuzzyPayTo']]
+fuzzy_pair['Replace_With'] = None
+x = 38
+replaced_with = []
+for x in fuzzy_pair.index :
+    if (fuzzy_pair['PAYTO'][x] not in replaced_with) :
+        fuzzy_pair.loc[x, 'Replace_With'] = fuzzy_pair['FuzzyPayTo'][x]
+        replaced_with.append(fuzzy_pair['FuzzyPayTo'][x])
+        
+fuzzy_pair = fuzzy_pair[['PAYTO', 'Replace_With']]
+fuzzy_pair = fuzzy_pair.loc[~pd.isna(fuzzy_pair['Replace_With'])]
+
+cc_check_fuzzy = cc_check.merge(fuzzy_pair,'left')
+cc_check_fuzzy['PAYTO'] = np.where(pd.isna(cc_check_fuzzy['Replace_With']),
+              cc_check_fuzzy['PAYTO'], cc_check_fuzzy['Replace_With'])
+
+f1_adj_ven = cc_check_fuzzy.groupby(['LOSS_POSTALCODE','LOSSCAUSE', 
                                'ADJUSTOR_EXPERIENCE', 'LastAssignedUser', 
                                'PAYTO'], as_index = False).\
                                agg({'REPORTABLEAMOUNT' : 'sum',
@@ -449,6 +501,7 @@ f1_adj_ven['Perc_Amount'] = 100 * \
 f1_adj_ven['Perc_Freq'] = 100 * \
     f1_adj_ven['Num_Claims'] / f1_adj_ven['Num_Claims_Vendor']
     
-    
+
+## Reliability Index
+
 ###############################################################################
-    
