@@ -71,9 +71,8 @@ cctl_zonetype = pd.read_sql(query,con = conn)
 query = 'select * from cc_catastrophe'
 cc_catastrophe = pd.read_sql(query,con = conn)
 
-query = 'select * from cc_catastrophe where id in '
-cc_catastrophe2 = pd.read_sql(query,con = conn)
-
+query = 'select * from cctl_catastrophetype'
+cctl_catastrophetype = pd.read_sql(query,con = conn)
  
 #select * from cc_catastrophe where 
 # ID in(select catastropheID from cc_claim where catastropheID is not null) 
@@ -127,6 +126,14 @@ cctl_userexperiencetype2 = cctl_userexperiencetype.copy()
 cc_checkpayee2 = cc_checkpayee.copy() 
 cc_claimIndicator2 = cc_claimIndicator.copy()
 
+cc_userregion2 = cc_userregion.copy()
+cc_region2 = cc_region.copy()
+cc_region_zone2 =cc_region_zone.copy()
+cc_catastrophezone2 = cc_catastrophezone.copy()
+cctl_zonetype2 = cctl_zonetype.copy()
+cc_catastrophe2 = cc_catastrophe.copy()
+cctl_catastrophetype2 = cctl_catastrophetype.copy()
+
 #cc_claim = cc_claim2.copy()
 #cc_Incident = cc_Incident2.copy()
 #cc_transaction = cc_transaction2.copy()
@@ -148,6 +155,13 @@ cc_claimIndicator2 = cc_claimIndicator.copy()
 #cctl_userexperiencetype = cctl_userexperiencetype2.copy()
 #cc_checkpayee = cc_checkpayee2.copy() 
 #cc_claimIndicator = cc_claimIndicator2.copy()
+#cc_userregion = cc_userregion2.copy()
+#cc_region = cc_region2.copy()
+#cc_region_zone =cc_region_zone2.copy()
+#cc_catastrophezone = cc_catastrophezone2.copy()
+#cctl_zonetype = cctl_zonetype2.copy()
+#cc_catastrophe = cc_catastrophe2.copy()
+#cctl_catastrophetype = cctl_catastrophetype2.copy()
 
 
 cctl_lobcode.to_csv(intermediate_dir_path + "cctl_lobcode.csv", 
@@ -193,6 +207,21 @@ cctl_userexperiencetype.to_csv(intermediate_dir_path + "cctl_userexperiencetype.
 cc_checkpayee.to_csv(intermediate_dir_path + "cc_checkpayee.csv", 
                                encoding='utf-8', index=False)
 cc_claimIndicator.to_csv(intermediate_dir_path + "cc_claimIndicator.csv", 
+                               encoding='utf-8', index=False)
+cc_userregion.to_csv(intermediate_dir_path + "cc_userregion.csv", 
+                               encoding='utf-8', index=False)
+cc_region.to_csv(intermediate_dir_path + "cc_region.csv", 
+                               encoding='utf-8', index=False)
+cc_region_zone.to_csv(intermediate_dir_path + "cc_region_zone.csv", 
+                               encoding='utf-8', index=False)
+cc_catastrophezone.to_csv(intermediate_dir_path + "cc_catastrophezone.csv", 
+                               encoding='utf-8', index=False)
+cctl_zonetype.to_csv(intermediate_dir_path + "cctl_zonetype.csv", 
+                               encoding='utf-8', index=False)
+cc_catastrophe.to_csv(intermediate_dir_path + "cc_catastrophe.csv", 
+                               encoding='utf-8', index=False)
+
+cctl_catastrophetype.to_csv(intermediate_dir_path + "cctl_catastrophetype.csv", 
                                encoding='utf-8', index=False)
 
 

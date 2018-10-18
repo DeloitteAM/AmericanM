@@ -105,6 +105,17 @@ cc_claimIndicator = cc_claimIndicator[['CLAIMID', 'SUBTYPE', 'ISON']]
 
 cctl_userexperiencetype = cctl_userexperiencetype[['ID', 'NAME']]
 
+cc_catastrophe = cc_catastrophe[['ID', 'TYPE', 'CATASTROPHEVALIDFROM',
+                                 'CATASTROPHEVALIDTO']]
+cctl_catastrophetype = cctl_catastrophetype[['ID', 'NAME']]
+
+cc_catastrophezone = cc_catastrophezone[['ID', 'CATASTROPHEID', 'COUNTRY', 
+                                         'ZONETYPE']]
+
+cc_catastrophezone['CATASTROPHEID'].nunique()
+cctl_zonetype = cctl_zonetype[['ID', 'NAME']]
+
+
 #################### Filter tables ############################################
 cc_claim = cc_claim.loc[cc_claim['STATE'] != 1] #Remove Draft Claims
 
@@ -119,8 +130,9 @@ cc_claimIndicator = cc_claimIndicator.loc[
 
 
 #Filter Payment Limit
-cc_authoritylimit = cc_authoritylimit.loc[cc_authoritylimit['LIMITTYPE'] == 2] 
+cc_authoritylimit = cc_authoritylimit.loc[cc_authoritylimit['LIMITTYPE'] == 7] 
 cc_authoritylimit = cc_authoritylimit.drop(columns = ['LIMITTYPE'])
+cc_authoritylimit3 = cc_authoritylimit.drop_duplicates(keep = 'first')
 
 #Filter  Severeity Indicator Flag 
 cc_claimIndicator = cc_claimIndicator.loc[cc_claimIndicator['SUBTYPE'] == 4]
@@ -141,7 +153,14 @@ cc_user.rename(columns={'ID':'USERID'}, inplace=True)
 cctl_userexperiencetype.rename(columns = {'NAME' : 'ADJUSTOR_EXPERIENCE'},
                                inplace=True)
 cc_check.rename(columns={'ID':'CHECKID'}, inplace=True)
-
+cc_catastrophe.rename(columns={'ID':'CATASTROPHEID'}, inplace=True)
+cc_catastrophe.rename(columns={'TYPE':'CATASTROPHETYPEID'}, inplace=True)
+cctl_catastrophetype.rename(columns={'ID':'CATASTROPHETYPEID'}, inplace=True)
+cctl_catastrophetype.rename(columns={'NAME':'CATASTROPHETYPE'}, inplace=True)
+cc_catastrophezone.rename(columns={'ID':'CATASTROPHEZONEID'}, inplace=True)
+cc_catastrophezone.rename(columns={'ZONETYPE':'ZONETYPEID'}, inplace=True)
+cctl_zonetype.rename(columns={'ID':'ZONETYPEID'}, inplace=True)
+cctl_zonetype.rename(columns={'NAME':'ZONETYPE'}, inplace=True)
 
 
 cc_address = column_preprocess(cc_address, ['ADDRESSLINE1'])
@@ -152,6 +171,7 @@ cc_transaction['CREATETIME'] = pd.to_datetime(cc_transaction["CREATETIME"])
 cc_activity['CREATETIME'] = pd.to_datetime(cc_activity["CREATETIME"])
 
 ################## Merge Data Tables ##########################################
+#cc_user = cc_user.merge(cc_authoritylimit, )
 
 loss_address = cc_address.copy()
 loss_address.columns = ['LOSS_' + str(col) for col in loss_address.columns]
@@ -170,7 +190,7 @@ del cc_address, cc_policy, cc_claimIndicator
 
 cc_check = cc_check.merge(cc_claimcontact, 'left')
 cc_check = cc_check.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID','LOSSCAUSE',
-                                    'LOSS_POSTALCODE']], 'left')
+                                    'LOSS_POSTALCODE', 'CATASTROPHEID']], 'left')
 cc_check = cc_check.merge(cctl_losscause, 'left')
 cc_check = cc_check.merge(cc_contact[['CONTACTID', 'FIRSTNAME', 
                                       'LASTNAME', 'NAME', 'ADDRESSBOOKUID']], 'left')
@@ -347,8 +367,8 @@ approval_manual_pymt['PercentageManual'] = \
 Thresold_Perc_Manual_Payment = np.mean(approval_manual_pymt['PercentageManual']) + \
     np.std(approval_manual_pymt['PercentageManual'])
 
-approval_manual_pymt = approval_manual_pymt.loc[approval_manual_pymt['PercentageManual'] \
-                                                > Thresold_Perc_Manual_Payment]
+#approval_manual_pymt = approval_manual_pymt.loc[approval_manual_pymt['PercentageManual'] \
+#                                                > Thresold_Perc_Manual_Payment]
 
 f3_claim = cc_claim.merge(approval_manual_pymt, 'inner')
 
@@ -388,7 +408,7 @@ cc_check = cc_check.merge(cause_pymt, 'left')
 cc_check['Cause_Thresold'] = cc_check['Mean_Payment'] + \
     num_std_dev * cc_check['Std_Payment']
     
-f5_check = cc_check
+f5_check = cc_check.copy()
 f5_check['ExtraThresold'] = f5_check['REPORTABLEAMOUNT'] - \
     f5_check['Cause_Thresold']
     
@@ -505,3 +525,99 @@ f1_adj_ven['Perc_Freq'] = 100 * \
 ## Reliability Index
 
 ###############################################################################
+
+################# Auhoriser History ###########################################
+    
+f7_adj = cc_claim.groupby('LastAssignedUser', as_index = False).\
+    agg({'ISON' : 'sum', 'CLAIMID' : 'nunique'})
+
+f7_adj['PercFraud'] = f7_adj['ISON']/f7_adj['CLAIMID']
+
+f7_adj = f7_adj.sort_values('PercFraud', ascending = False)
+
+
+############################################################################### 
+############### Catastrophe ###################################################
+
+cc_claim_catastrophe = cc_claim.loc[~pd.isna(cc_claim['CATASTROPHEID'])]
+cc_claim_catastrophe = cc_claim_catastrophe.merge(cc_catastrophe, 'left')  
+
+
+cc_check_catastrophe = cc_check.merge(cc_catastrophe, 'inner')
+
+##Adjustor Overpaying for certain cause in catastrophe
+
+
+cause_pymt = cc_check_catastrophe.groupby([ 'CATASTROPHEID', 'LOSSCAUSE'], 
+                              as_index = False).\
+                              agg({'REPORTABLEAMOUNT' : ['mean', 'std']})  
+                              
+cause_pymt.columns = ['CATASTROPHEID' , 'LOSSCAUSE', 'Mean_Payment', 'Std_Payment']
+
+cc_check_catastrophe = cc_check_catastrophe.merge(cause_pymt, 'left') 
+
+cc_check_catastrophe['Cause_Thresold'] = cc_check_catastrophe['Mean_Payment'] + \
+    num_std_dev * cc_check_catastrophe['Std_Payment']
+    
+f8_check = cc_check_catastrophe.copy()
+f8_check.columns.values
+f8_check['ExtraThresold'] = f8_check['REPORTABLEAMOUNT'] - \
+    f8_check['Cause_Thresold']
+    
+f8_check['ExtraThresold'] = np.where(f8_check['ExtraThresold'] > 0,
+        f8_check['ExtraThresold'], 0)
+
+f8_summary = f8_check.groupby(['CATASTROPHEID','LOSSCAUSE'], as_index = False).\
+    agg({'ExtraThresold':'sum', 'REPORTABLEAMOUNT' : 'sum'})
+    
+f8_summary['ExcessPaidAmt'] = 100 * \
+    f8_summary['ExtraThresold']/ f8_summary['REPORTABLEAMOUNT']
+
+f8_summary = f8_summary.sort_values('ExcessPaidAmt', ascending = False) #order the reserves
+
+
+##################### Fraud : Adjustor approving more than claim ##############################
+
+## Get Claimed Amount for each claimant and claim
+reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2] ### Only keep reserve data
+reserve_dat = reserve_dat[['CREATETIME', 'CLAIMID','EXPOSUREID', 'TRANSACTIONID', 'CLAIMCONTACTID']]
+
+#reserve_dat['CLAIMID'].nunique()
+#reserve_dat[['CLAIMID', 'EXPOSUREID']].nunique()
+#reserve_dat.groupby(['CLAIMID', 'EXPOSUREID']).ngroups
+
+reserve_dat = reserve_dat.sort_values('CREATETIME', ascending = True) #order the reserves
+reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], as_index = False).first() #keep only first reserve
+reserve_first['TRANSACTIONID'].nunique()
+#
+#cc_transactionlineitem['TRANSACTIONID'].nunique()
+
+
+##  For Non reserve transaction, multiple entries possible in cc_transactionlineitem
+amt_claimed = cc_transactionlineitem.groupby('TRANSACTIONID', as_index = False).agg({'REPORTINGAMOUNT' : 'sum'})
+
+reserve_first = reserve_first.merge(amt_claimed, 'left') #get the claimed amount
+reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 'left') # get claimant id
+
+reserve_first = reserve_first.merge(cc_contact[['CONTACTID', 'FIRSTNAME', 'LASTNAME', 'NAME']], 'left') # get claimant info
+
+## Amt received by claimant on each claim
+amt_claimant_received = cc_check.groupby(['CLAIMID', 'FIRSTNAME', 'LASTNAME','NAME'], as_index = False).agg(\
+                                        {'REPORTABLEAMOUNT' : 'sum'})
+
+## Merging amount received and claimed together
+payment_claimed_dat = reserve_first.merge(amt_claimant_received, 'left')
+
+payment_claimed_dat = payment_claimed_dat.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID']], 'left')
+payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'FIRSTNAME', 'LASTNAME', 'NAME', 'ASSIGNEDUSERID',\
+                                          'REPORTINGAMOUNT', 'REPORTABLEAMOUNT']]
+
+## fill 0 for payment amount not available
+payment_claimed_dat.fillna(0, inplace= True)
+payment_claimed_dat['Claim_Approve_Ratio'] = payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat['REPORTINGAMOUNT']
+
+payment_claimed_f6 = payment_claimed_dat.loc[payment_claimed_dat['Claim_Approve_Ratio'] > 1]
+
+payment_claimed_grp = payment_claimed_f6.groupby('ASSIGNEDUSERID', as_index = False).agg({ \
+        'REPORTINGAMOUNT' : 'sum', 'REPORTABLEAMOUNT' : 'sum', 'Claim_Approve_Ratio' : 'mean'})
+
