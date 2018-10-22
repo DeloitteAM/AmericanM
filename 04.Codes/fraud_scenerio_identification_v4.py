@@ -30,7 +30,7 @@ from collections import Counter
 num_std_dev = 2
 
 ################################# Read INI File ###############################
-ini_path = 'C:\\Users\\dmiglani\\Desktop\\ModernAmerican\\config_modern_am_oracle.ini'
+ini_path = 'C:\\Users\\rashroff\\Documents\\GitHub\\AmericanM\\config_modern_am_oracle.ini'
 
 config = configparser.ConfigParser()
 config.read(ini_path)
@@ -55,7 +55,7 @@ del proj_path
 
 ################################## Connect to oracle DB #######################
 conn_str = user + "/" + pwd + "@" + host + ":" + port + "/" + db
-conn_str = 'ClAIMUSER' + "/" + pwd + "@" + host + ":" + port + "/" + 'CCDatabase'
+conn_str = 'ClAIMUSER' + "/" + pwd + "@" + host + ":" + port + "/" + db
 conn = cx_Oracle.connect(conn_str)
 
 del host, port, db, user, pwd, conn_str
@@ -403,7 +403,7 @@ del Thresold_Perc_Manual_Payment
 #
 #plot(fig)  
 
-################ Fraud 5 : Adjustor Overpaying for certain cause ##############
+################ Patterns of historical payments for each adjuster compared to the other adjusters (and this is done by experience level)  ##############
 
 cc_check_non_cat = cc_check.loc[pd.isna(cc_check['CATASTROPHEID'])]
 cause_pymt = cc_check_non_cat.groupby(['LOSSCAUSE', 'ADJUSTOR_EXPERIENCE'],
@@ -455,7 +455,7 @@ f5_summary = f5_summary.sort_values('ExcessPaidAmt', ascending = False) #order t
 
 
 
-############### Adjustor - Vendor Pair ########################################
+############### Adjustor - Vendor Pair(Multiple/ Fraudulent payments to same party/vendor) ########################################
 cc_check.columns.values
 
 ## Fuzzy Match
@@ -539,7 +539,8 @@ f1_adj_ven['Perc_Freq'] = 100 * \
 ###############################################################################
 
 ################# Auhoriser History ###########################################
-    
+################Adjusters with a history of irresponsible behavior 
+#############(Number of claims guidelines / rules broken)#############    
 f7_adj = cc_claim.groupby('LastAssignedUser', as_index = False).\
     agg({'ISON' : 'sum', 'CLAIMID' : 'nunique'})
 
@@ -549,7 +550,7 @@ f7_adj = f7_adj.sort_values('PercFraud', ascending = False)
 
 
 ############################################################################### 
-############### Catastrophe ###################################################
+############### Authority level fraud(Catastrophe) ###################################################
 
 cc_claim_catastrophe = cc_claim.loc[~pd.isna(cc_claim['CATASTROPHEID'])]
 cc_claim_catastrophe = cc_claim_catastrophe.merge(cc_catastrophe, 'left')  
@@ -588,7 +589,8 @@ f8_summary['ExcessPaidAmt'] = 100 * \
 f8_summary = f8_summary.sort_values('ExcessPaidAmt', ascending = False) #order the reserves
 
 
-##################### Fraud : Adjustor approving more than claim ##############################
+##################### Fraud : Adjuster paying the insured more than the claim amount (but staying within their authorization limit)
+ ##############################
 
 # Only keep reserve data
 reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2] 
@@ -617,6 +619,7 @@ reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']],
 reserve_first = reserve_first.merge(cc_contact[['CONTACTID', 
                                                 'FIRSTNAME', 'LASTNAME', 
                                                 'NAME']], 'left') # get claimant info
+
 
 ## Amt received by claimant on each claim
 amt_claimant_received = cc_check.groupby(['CLAIMID', 'FIRSTNAME', 'LASTNAME', 
