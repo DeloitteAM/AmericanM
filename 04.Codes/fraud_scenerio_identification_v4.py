@@ -97,7 +97,7 @@ cc_checkpayee = cc_checkpayee[['ID', 'CHECKID', 'PAYEEDENORMID', 'CLAIMCONTACTID
 
 cc_activity = cc_activity[['CLAIMID', 'CREATETIME', 'UPDATEUSERID']]
 
-cc_user = cc_user[['ID','AUTHORITYPROFILEID', 'EXPERIENCELEVEL']]
+cc_user = cc_user[['ID','AUTHORITYPROFILEID', 'EXPERIENCELEVEL','CREATETIME']]
 
 cc_authoritylimit = cc_authoritylimit[['PROFILEID', 'LIMITAMOUNT', 'LIMITTYPE']]
 
@@ -112,7 +112,6 @@ cctl_catastrophetype = cctl_catastrophetype[['ID', 'NAME']]
 cc_catastrophezone = cc_catastrophezone[['ID', 'CATASTROPHEID', 'COUNTRY', 
                                          'ZONETYPE']]
 
-cc_catastrophezone['CATASTROPHEID'].nunique()
 cctl_zonetype = cctl_zonetype[['ID', 'NAME']]
 
 
@@ -169,10 +168,15 @@ cc_contact = column_preprocess(cc_contact,['FIRSTNAME', 'LASTNAME', 'NAME'])
 
 cc_transaction['CREATETIME'] = pd.to_datetime(cc_transaction["CREATETIME"])
 cc_activity['CREATETIME'] = pd.to_datetime(cc_activity["CREATETIME"])
+cc_user['CREATETIME'] = pd.to_datetime(cc_user["CREATETIME"])
+
+cc_user['Experience_Months'] = pd.to_datetime('today').to_period('M') - \
+    cc_user['CREATETIME'].dt.to_period('M')
+    
+cc_user = cc_user.drop(columns = 'CREATETIME')
 
 ################## Merge Data Tables ##########################################
 #cc_user = cc_user.merge(cc_authoritylimit, )
-
 loss_address = cc_address.copy()
 loss_address.columns = ['LOSS_' + str(col) for col in loss_address.columns]
 cc_claim = cc_claim.merge(loss_address, 'left', 
@@ -222,6 +226,7 @@ cc_claim = cc_claim.merge(cctl_userexperiencetype, 'left',
                           right_on = 'ID')
 
 Counter(cc_claim['ADJUSTOR_EXPERIENCE'])
+
 #################### Useful Tables ############################################
 claim_payment = cc_check.groupby('CLAIMID', as_index= False).\
     agg({'REPORTABLEAMOUNT' : 'sum'})
@@ -257,6 +262,7 @@ cc_check = cc_check.merge(vendor_dat, 'left',
 
 approvals_dat = cc_activity.groupby('CLAIMID', as_index = False).\
     agg({'UPDATEUSERID': 'nunique'})
+    
 approvals_dat.rename(columns={'UPDATEUSERID':'NumApprovals'}, inplace=True)
 
 cc_claim = cc_claim.merge(approvals_dat, 'left')
@@ -276,8 +282,10 @@ approvals_summary['NumApprovals'] = approvals_summary['NumApprovals'].astype(int
 approvals_summary['NumApprovals'] = np.where(approvals_summary['NumApprovals'] == "3",
                  ">=3", approvals_summary['NumApprovals'])
 
-approvals_summary = approvals_summary.groupby('NumApprovals', as_index = False).\
-    agg({'NumClaims' :'sum', 'Payment' : 'sum'})
+approvals_summary = approvals_summary.groupby('NumApprovals', 
+                                              as_index = False).\
+                                              agg({'NumClaims' :'sum', 
+                                                   'Payment' : 'sum'})
 
 approvals_summary['Avg_Payment'] = approvals_summary['Payment']/approvals_summary['NumClaims']
 
@@ -397,11 +405,13 @@ del Thresold_Perc_Manual_Payment
 
 ################ Fraud 5 : Adjustor Overpaying for certain cause ##############
 
-
-cause_pymt = cc_check.groupby('LOSSCAUSE', 
+cc_check_non_cat = cc_check.loc[pd.isna(cc_check['CATASTROPHEID'])]
+cause_pymt = cc_check_non_cat.groupby(['LOSSCAUSE', 'ADJUSTOR_EXPERIENCE'],
                               as_index = False).\
-                              agg({'REPORTABLEAMOUNT' : ['mean', 'std']})                         
-cause_pymt.columns = ['LOSSCAUSE', 'Mean_Payment', 'Std_Payment']
+                              agg({'REPORTABLEAMOUNT' : ['mean', 'std']}) 
+                              
+cause_pymt.columns = ['LOSSCAUSE', 'ADJUSTOR_EXPERIENCE', 
+                      'Mean_Payment', 'Std_Payment']
 
 cc_check = cc_check.merge(cause_pymt, 'left') 
 
@@ -415,8 +425,10 @@ f5_check['ExtraThresold'] = f5_check['REPORTABLEAMOUNT'] - \
 f5_check['ExtraThresold'] = np.where(f5_check['ExtraThresold'] > 0,
         f5_check['ExtraThresold'], 0)
 
-f5_summary = f5_check.groupby('LOSSDESCRIPTION', as_index = False).\
-    agg({'ExtraThresold':'sum', 'REPORTABLEAMOUNT' : 'sum'})
+f5_summary = f5_check.groupby(['LOSSDESCRIPTION', 'ADJUSTOR_EXPERIENCE'],
+                              as_index = False).\
+                              agg({'ExtraThresold':'sum', 
+                                   'REPORTABLEAMOUNT' : 'sum'})
     
 f5_summary['ExcessPaidAmt'] = 100 * \
     f5_summary['ExtraThresold']/ f5_summary['REPORTABLEAMOUNT']
@@ -578,46 +590,67 @@ f8_summary = f8_summary.sort_values('ExcessPaidAmt', ascending = False) #order t
 
 ##################### Fraud : Adjustor approving more than claim ##############################
 
+# Only keep reserve data
+reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2] 
+
 ## Get Claimed Amount for each claimant and claim
-reserve_dat = cc_transaction.loc[cc_transaction['SUBTYPE'] == 2] ### Only keep reserve data
-reserve_dat = reserve_dat[['CREATETIME', 'CLAIMID','EXPOSUREID', 'TRANSACTIONID', 'CLAIMCONTACTID']]
+reserve_dat = reserve_dat[['CREATETIME', 'CLAIMID','EXPOSUREID', 
+                           'TRANSACTIONID', 'CLAIMCONTACTID']]
+#Order the reserves
+reserve_dat = reserve_dat.sort_values('CREATETIME', 
+                                      ascending = True) 
 
-#reserve_dat['CLAIMID'].nunique()
-#reserve_dat[['CLAIMID', 'EXPOSUREID']].nunique()
-#reserve_dat.groupby(['CLAIMID', 'EXPOSUREID']).ngroups
+#keep only first reserve
+reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], 
+                                    as_index = False).first() 
+##  For Non reserve transaction, 
+## multiple entries possible in cc_transactionlineitem
 
-reserve_dat = reserve_dat.sort_values('CREATETIME', ascending = True) #order the reserves
-reserve_first = reserve_dat.groupby(['CLAIMID', 'EXPOSUREID'], as_index = False).first() #keep only first reserve
-reserve_first['TRANSACTIONID'].nunique()
-#
-#cc_transactionlineitem['TRANSACTIONID'].nunique()
-
-
-##  For Non reserve transaction, multiple entries possible in cc_transactionlineitem
-amt_claimed = cc_transactionlineitem.groupby('TRANSACTIONID', as_index = False).agg({'REPORTINGAMOUNT' : 'sum'})
+amt_claimed = cc_transactionlineitem.groupby('TRANSACTIONID', 
+                                             as_index = False).\
+                                             agg({'REPORTINGAMOUNT' : 'sum'})
 
 reserve_first = reserve_first.merge(amt_claimed, 'left') #get the claimed amount
-reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 'left') # get claimant id
+reserve_first = reserve_first.merge(cc_exposure[['CONTACTID', 'EXPOSUREID']], 
+                                    'left') # get claimant id
 
-reserve_first = reserve_first.merge(cc_contact[['CONTACTID', 'FIRSTNAME', 'LASTNAME', 'NAME']], 'left') # get claimant info
+reserve_first = reserve_first.merge(cc_contact[['CONTACTID', 
+                                                'FIRSTNAME', 'LASTNAME', 
+                                                'NAME']], 'left') # get claimant info
 
 ## Amt received by claimant on each claim
-amt_claimant_received = cc_check.groupby(['CLAIMID', 'FIRSTNAME', 'LASTNAME','NAME'], as_index = False).agg(\
+amt_claimant_received = cc_check.groupby(['CLAIMID', 'FIRSTNAME', 'LASTNAME', 
+                                          'NAME'], as_index = False).agg(\
                                         {'REPORTABLEAMOUNT' : 'sum'})
 
 ## Merging amount received and claimed together
 payment_claimed_dat = reserve_first.merge(amt_claimant_received, 'left')
 
-payment_claimed_dat = payment_claimed_dat.merge(cc_claim[['CLAIMID', 'ASSIGNEDUSERID']], 'left')
-payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'FIRSTNAME', 'LASTNAME', 'NAME', 'ASSIGNEDUSERID',\
+payment_claimed_dat = payment_claimed_dat.merge(cc_claim[['CLAIMID', 
+                                                          'LastAssignedUser']],\
+                                                'left')
+
+payment_claimed_dat = payment_claimed_dat[['CLAIMID', 'FIRSTNAME', 'LASTNAME', 
+                                           'NAME', 'LastAssignedUser',\
                                           'REPORTINGAMOUNT', 'REPORTABLEAMOUNT']]
 
 ## fill 0 for payment amount not available
 payment_claimed_dat.fillna(0, inplace= True)
-payment_claimed_dat['Claim_Approve_Ratio'] = payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat['REPORTINGAMOUNT']
+payment_claimed_dat['Claim_Approve_Ratio'] = \
+    payment_claimed_dat['REPORTABLEAMOUNT']/payment_claimed_dat['REPORTINGAMOUNT']
 
 payment_claimed_f6 = payment_claimed_dat.loc[payment_claimed_dat['Claim_Approve_Ratio'] > 1]
 
-payment_claimed_grp = payment_claimed_f6.groupby('ASSIGNEDUSERID', as_index = False).agg({ \
-        'REPORTINGAMOUNT' : 'sum', 'REPORTABLEAMOUNT' : 'sum', 'Claim_Approve_Ratio' : 'mean'})
+payment_claimed_grp = payment_claimed_f6.groupby('LastAssignedUser', 
+                                                 as_index = False).\
+                                                 agg({'REPORTINGAMOUNT' : 'sum', 
+                                                      'REPORTABLEAMOUNT' : 'sum', 
+                                                      'Claim_Approve_Ratio' : 'mean'})   
 
+############### Adjustor Claimant pair ####################    
+    
+cc_check.columns.values
+cc_address.columns.values
+    
+cc_fuzzy = cc_contact.merge(cc_address,)
+    
