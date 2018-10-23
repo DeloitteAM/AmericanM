@@ -73,9 +73,14 @@ cc_catastrophe = pd.read_sql(query,con = conn)
 
 query = 'select * from cctl_catastrophetype'
 cctl_catastrophetype = pd.read_sql(query,con = conn)
+
+query = 'select * from cctl_contactrole'
+cctl_contactrole = pd.read_sql(query,con = conn)
  
-#select * from cc_catastrophe where 
-# ID in(select catastropheID from cc_claim where catastropheID is not null) 
+query = 'select * from cc_claimcontactrole'
+cc_claimcontactrole = pd.read_sql(query,con = conn)
+
+ 
  
 
 
@@ -133,6 +138,9 @@ cc_catastrophezone2 = cc_catastrophezone.copy()
 cctl_zonetype2 = cctl_zonetype.copy()
 cc_catastrophe2 = cc_catastrophe.copy()
 cctl_catastrophetype2 = cctl_catastrophetype.copy()
+cctl_contactrole2 = cctl_contactrole.copy()
+cc_claimcontactrole2 = cc_claimcontactrole.copy()
+
 
 #cc_claim = cc_claim2.copy()
 #cc_Incident = cc_Incident2.copy()
@@ -162,7 +170,8 @@ cctl_catastrophetype2 = cctl_catastrophetype.copy()
 #cctl_zonetype = cctl_zonetype2.copy()
 #cc_catastrophe = cc_catastrophe2.copy()
 #cctl_catastrophetype = cctl_catastrophetype2.copy()
-
+#cctl_contactrole = cctl_contactrole2.copy()
+#cc_claimcontactrole = cc_claimcontactrole2.copy()
 
 cctl_lobcode.to_csv(intermediate_dir_path + "cctl_lobcode.csv", 
                 encoding='utf-8', index=False)
@@ -224,8 +233,12 @@ cc_catastrophe.to_csv(intermediate_dir_path + "cc_catastrophe.csv",
 cctl_catastrophetype.to_csv(intermediate_dir_path + "cctl_catastrophetype.csv", 
                                encoding='utf-8', index=False)
 
+cctl_contactrole.to_csv(intermediate_dir_path + "cctl_contactrole.csv", 
+                               encoding='utf-8', index=False)
 
 
+cc_claimcontactrole.to_csv(intermediate_dir_path + "cc_claimcontactrole.csv", 
+                               encoding='utf-8', index=False)
 
 
 
